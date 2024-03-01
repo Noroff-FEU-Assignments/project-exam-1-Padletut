@@ -35,8 +35,10 @@ export function renderPosts(renderContainer, loaderContainer, page = 1) {
 
             // Format the date mmm.dd.yyyy
             const date = new Date(post.date);
-            const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
-            const formattedDate = date.toLocaleDateString('no-nb', options);
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            const formattedDate = `${month}.${day}.${year}`;
 
             const postDate = document.createElement('span');
             postDate.innerHTML = formattedDate;

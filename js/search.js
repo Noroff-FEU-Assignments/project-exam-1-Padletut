@@ -13,7 +13,7 @@ export function searchFunction() {
 
     // Close the search input when the user clicks outside of it or search loose focus
     document.addEventListener('click', (e) => {
-        if (e.target !== searchButton && e.target !== searchInput && !searchInput.contains(e.target)) {
+        if (window.innerWidth < 725 && e.target !== searchButton && e.target !== searchInput && !searchInput.contains(e.target)) {
             searchInput.setAttribute('style', 'display: none');
             headerH1.setAttribute('style', 'display: block');
         }
