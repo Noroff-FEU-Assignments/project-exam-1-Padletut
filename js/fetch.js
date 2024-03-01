@@ -21,31 +21,23 @@ import * as constant from './constants.js';
 authenticate(); */
 
 // Function to fetch posts try catch
-async function fetchPosts() {
+export async function fetchPosts(page = 1) {
     try {
-        const response = await fetch(`${constant.url}`);
+        const response = await fetch(`${constant.url}/posts?_embed&status=publish&page=${page}`);
         const data = await response.json();
         console.log(data);
+        return data;
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-// Function to fetch wp users
-async function fetchUsers() {
-    try {
-        const response = await fetch(`${constant.url}/users`);
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
+
 
 //fetchUsers();
 
 
-// Function to POST a new post, autoriazation by Application Passwords
+/* // Function to POST a new post, autoriazation by Application Passwords
 async function createPost(title, content, status = 'publish') {
     const username = 'exam';
     const password = 'jaNe d3U9 yrZI AYWw fAFv l1Pj';
@@ -78,7 +70,7 @@ async function createPost(title, content, status = 'publish') {
         console.error('Error creating post:', error);
         throw error;
     }
-}
+} */
 
 
 //createPost('This is my post!', 'This is the post content.').then(post => console.log(post)).catch(error => console.error(error));
