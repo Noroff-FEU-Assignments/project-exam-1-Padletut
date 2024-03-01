@@ -1,3 +1,5 @@
+import { loadFromLocalStorage, saveToLocalStorage, removeFromLocalStorage } from "./storage/local.js";
+
 // Export function to toggle between light and dark theme
 
 export function toggleTheme() {
@@ -8,27 +10,22 @@ export function toggleTheme() {
         themeToggleButton.addEventListener('click', () => {
             const theme = document.body;
             theme.classList.toggle('dark-mode');
+            if (theme.classList.contains('dark-mode')) {
+                removeFromLocalStorage('theme');
+                saveToLocalStorage('theme', theme.classList);
+            } else {
+                removeFromLocalStorage('theme');
+            }
         });
     });
 
-    // Add event listener to the search button and display the search input when clicked or touched
-    const searchButton = document.querySelector('.search button');
-    const searchInput = document.querySelector('.search input');
-    const headerH1 = document.querySelector('header h1');
-
-    searchButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        searchInput.setAttribute('style', 'display: block');
-        headerH1.setAttribute('style', 'display: none');
-        searchButton.setAttribute('style', 'position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 1000;');
-    });
-
-    // Close the search input when the user clicks outside of it or search loose focus
-    document.addEventListener('click', (e) => {
-        if (e.target !== searchButton && e.target !== searchInput && !searchInput.contains(e.target)) {
-            searchInput.setAttribute('style', 'display: none');
-            headerH1.setAttribute('style', 'display: block');
+    // Load the theme from local storage and set <label class="toggleswitch"> <input type="checkbox"><span class="fas fa-sun slider round"></span></label> input to checked if dark mode is enabled
+    const theme = loadFromLocalStorage('theme');
+    if (theme) {
+        document.body.classList = theme[0];
+        if (theme[0] === 'dark-mode') {
+            const inputToggle = document.querySelector('.toggleswitch input');
+            inputToggle.checked = true;
         }
-    });
+    }
 }
