@@ -314,7 +314,7 @@ footer {
 
 /* Posts list */
 
-.post {
+.posts {
   cursor: pointer;
 }
 
@@ -386,6 +386,7 @@ footer {
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
 }
 
 .post-content p {
@@ -534,4 +535,5 @@ footer {
   max-height: 80%;
   object-fit: contain;
   border-radius: 10px;
+  cursor: pointer;
 }

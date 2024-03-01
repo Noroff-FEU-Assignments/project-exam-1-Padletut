@@ -15,7 +15,7 @@ export function renderPosts(renderContainer, loaderContainer, page = 1) {
         data.forEach(post => {
             const postContainer = document.createElement('div');
             const postAuthorDateContainer = document.createElement('div');
-            postContainer.classList.add('post');
+            postContainer.classList.add('posts');
             postAuthorDateContainer.classList.add('post-author-date');
             renderContainer.appendChild(postContainer);
 
