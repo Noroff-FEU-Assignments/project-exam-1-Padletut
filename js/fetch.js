@@ -1,7 +1,7 @@
 import * as constant from './constants.js';
 
 // Function to authenticate WP REST API
-async function authenticate() {
+/* async function authenticate() {
     const username = 'exam';
     const password = 'jaNe d3U9 yrZI AYWw fAFv l1Pj';
     try {
@@ -18,7 +18,7 @@ async function authenticate() {
     }
 }
 
-authenticate();
+authenticate(); */
 
 // Function to fetch posts try catch
 async function fetchPosts() {
@@ -79,5 +79,6 @@ async function createPost(title, content, status = 'publish') {
         throw error;
     }
 }
+
 
 //createPost('This is my post!', 'This is the post content.').then(post => console.log(post)).catch(error => console.error(error));
