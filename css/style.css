@@ -352,6 +352,19 @@ footer {
   background-color: var(--color-accent-1);
   border: none;
   border-radius: 10px;
+  color: var(--color-dark-text);
+  padding: 10px 0;
+}
+
+.show-more-button:hover {
+  background-color: #2387f1;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
+}
+
+.dark-mode .show-more-button:hover {
+  background-color: #2387f1;
+  box-shadow: 0px 1px 2px 3px rgba(231, 230, 230, 0.12);
 }
 
 /* Post details */

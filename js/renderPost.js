@@ -15,11 +15,6 @@ export function renderPost(id) {
                 title.innerHTML = data.title.rendered;
                 post.appendChild(title);
 
-                const content = document.createElement('div');
-                content.classList.add('post-content');
-                content.innerHTML = data.content.rendered;
-                post.appendChild(content);
-
                 const authorDateContainer = document.createElement('div');
                 authorDateContainer.classList.add('post-author-date-container');
                 post.appendChild(authorDateContainer);
@@ -32,6 +27,12 @@ export function renderPost(id) {
 
                 postDate.innerHTML = new Date(data.date).toLocaleDateString('no-nb', { day: 'numeric', month: 'numeric', year: 'numeric' });
                 authorDateContainer.appendChild(postDate);
+
+                const content = document.createElement('div');
+                content.classList.add('post-content');
+                content.innerHTML = data.content.rendered;
+                post.appendChild(content);
+
                 imageModal();
             });
         renderComments(id);
