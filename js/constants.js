@@ -3,3 +3,6 @@ export const themeKey = "theme";
 
 export const loaderContainer = document.querySelector('.loader-container');
 export const postsListContainer = document.querySelector('.posts-list');
+export const post = document.querySelector('.post');
+export const comments = document.querySelector('.comments');
+export const commentForm = document.querySelector('.comment-form');
