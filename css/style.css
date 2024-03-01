@@ -52,6 +52,7 @@ body {
 a {
   font-family: var(--font-open-sans);
   font-size: var(--font-size-32);
+  text-decoration: none;
 }
 
 h1 {

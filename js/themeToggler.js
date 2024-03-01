@@ -4,20 +4,19 @@ import { loadFromLocalStorage, saveToLocalStorage, removeFromLocalStorage } from
 // Export function to toggle between light and dark theme
 
 export function toggleTheme() {
-    const themeToggleButton = document.querySelector('.slider');
 
     // Add event listener to the theme toggle button
-    document.addEventListener('DOMContentLoaded', () => {
-        themeToggleButton.addEventListener('click', () => {
-            const theme = document.body;
-            theme.classList.toggle('dark-mode');
-            if (theme.classList.contains('dark-mode')) {
-                removeFromLocalStorage(constants.themeKey);
-                saveToLocalStorage(constants.themeKey, theme.classList);
-            } else {
-                removeFromLocalStorage(constants.themeKey);
-            }
-        });
+
+    const themeToggleButton = document.querySelector('.slider');
+    themeToggleButton.addEventListener('click', () => {
+        const theme = document.body;
+        theme.classList.toggle('dark-mode');
+        if (theme.classList.contains('dark-mode')) {
+            removeFromLocalStorage(constants.themeKey);
+            saveToLocalStorage(constants.themeKey, theme.classList);
+        } else {
+            removeFromLocalStorage(constants.themeKey);
+        }
     });
 
     // Load the theme from local storage and set <label class="toggleswitch"> <input type="checkbox"><span class="fas fa-sun slider round"></span></label> input to checked if dark mode is enabled
