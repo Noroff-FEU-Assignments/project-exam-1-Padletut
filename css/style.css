@@ -593,7 +593,7 @@ footer {
 
   .search input:focus {
     display: block;
-    z-index: 10;
+    z-index: 0;
   }
 
   section.post {
