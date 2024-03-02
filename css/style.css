@@ -568,8 +568,7 @@ footer {
 }
 
 .modal img {
-  width: 95%;
-  max-height: 85%;
+  width: 90%;
   object-fit: contain;
   border-radius: 12px;
   cursor: pointer;
