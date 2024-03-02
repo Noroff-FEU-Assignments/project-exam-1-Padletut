@@ -25,12 +25,18 @@ export function renderComments(id, addComment = false) {
 
                         const commentAuthor = document.createElement('span');
                         commentAuthor.classList.add('comment-author');
-                        commentAuthor.innerHTML = comment.author_name;
+                        commentAuthor.innerHTML = `By ${comment.author_name}`;
                         commentAuthorDateContainer.appendChild(commentAuthor);
 
                         const commentDate = document.createElement('span');
                         commentDate.classList.add('comment-date');
-                        commentDate.innerHTML = new Date(comment.date).toLocaleDateString('no-nb', { day: 'numeric', month: 'numeric', year: 'numeric' });
+                        // Format the date mmm.dd.yyyy
+                        const date = new Date(comment.date);
+                        const day = date.getDate().toString().padStart(2, '0');
+                        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                        const year = date.getFullYear();
+                        const formattedDate = `${month}.${day}.${year}`;
+                        commentDate.innerHTML = formattedDate;
                         commentAuthorDateContainer.appendChild(commentDate);
 
                         const commentContent = document.createElement('div');
