@@ -19,6 +19,17 @@ export function imageModal() {
                 modal.classList.add('modal');
                 document.body.appendChild(modal);
 
+                // Create close button
+                const closeButton = document.createElement('i');
+                closeButton.classList.add('fas', 'fa-times', 'image-modal-close');
+                closeButton.addEventListener('click', () => {
+                    modal.style.opacity = "0";
+                    setTimeout(() => {
+                        modal.remove();
+                    }, 800);
+                });
+                modal.appendChild(closeButton);
+
                 // Wait for the modal to be appended to the DOM before adding the image
                 setTimeout(() => {
                     modal.style.opacity = "1";

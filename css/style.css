@@ -463,6 +463,15 @@ footer {
   transform: scale(1.2);
 }
 
+.image-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 32px;
+  color: var(--color-dark-text);
+  cursor: pointer;
+}
+
 .dark-mode .post-content img {
   box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.12);
 }
