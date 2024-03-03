@@ -5,7 +5,6 @@ import { toggleMobileMenu } from "./toggleMobileMenu.js";
 import { searchFunction } from "./search.js";
 import { renderPosts } from "./renderPosts.js";
 import { renderPost } from "./renderPost.js";
-import { imageModal } from "./imageModal.js";
 import { addNewComment } from "./addComment.js";
 
 // Call the renderHeader function after the DOM has loaded
@@ -37,6 +36,3 @@ if (constants.post) {
 if (constants.commentForm) {
     addNewComment();
 }
-
-// listener for imagemodal if use clicks on an image
-document.addEventListener('click', imageModal);

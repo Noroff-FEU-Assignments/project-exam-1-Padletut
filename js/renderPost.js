@@ -21,6 +21,14 @@ export function renderPost(id) {
                 content.innerHTML = data.content.rendered;
                 post.appendChild(content);
 
+                // Create imageModal icon fa-search-plus inside content figure
+                const imageContainer = document.querySelectorAll('.post-content figure');
+                imageContainer.forEach(image => {
+                    const imageModalIcon = document.createElement('i');
+                    imageModalIcon.classList.add('fas', 'fa-search-plus', 'image-modal-icon');
+                    image.appendChild(imageModalIcon);
+                });
+
                 const authorDateContainer = document.createElement('div');
                 authorDateContainer.classList.add('post-author-date-container');
                 post.appendChild(authorDateContainer);

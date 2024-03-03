@@ -2,7 +2,13 @@ export function imageModal() {
     const postContent = document.querySelector('.post-content');
     if (postContent) {
         const handleClick = (event) => {
-            if (event.target.tagName === 'IMG') {
+            let target = event.target.closest('img, .image-modal-icon');
+            if (target) {
+                // If the target is the .image-modal-icon, find the associated img
+                if (target.classList.contains('image-modal-icon')) {
+                    target = target.parentElement.querySelector('img');
+                }
+
                 // Check if modal already exists
                 const existingModal = document.querySelector('.modal');
                 if (existingModal) {
@@ -19,8 +25,8 @@ export function imageModal() {
                 }, 0);
 
                 const img = document.createElement('img');
-                img.src = event.target.src;
-                img.alt = event.target.alt;
+                img.src = target.src;
+                img.alt = target.alt;
                 modal.appendChild(img);
 
                 modal.addEventListener('click', () => {
@@ -32,10 +38,10 @@ export function imageModal() {
             }
         };
 
-        // Remove existing event listener
-        postContent.removeEventListener('click', handleClick);
-
-        // Add new event listener
-        postContent.addEventListener('click', handleClick);
+        // Add event listener to parent element
+        const parentElement = document.querySelector('.wp-block-image');
+        if (parentElement) {
+            parentElement.addEventListener('click', handleClick);
+        }
     }
 }
