@@ -38,10 +38,10 @@ export function imageModal() {
             }
         };
 
-        // Add event listener to parent element
-        const parentElement = document.querySelector('.wp-block-image');
-        if (parentElement) {
+        // Add event listener to all elements with class .wp-block-image
+        const parentElements = document.querySelectorAll('.wp-block-image');
+        parentElements.forEach(parentElement => {
             parentElement.addEventListener('click', handleClick);
-        }
+        });
     }
 }
