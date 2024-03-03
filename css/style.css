@@ -75,6 +75,8 @@ h2 {
   font-weight: 400;
   text-align: center;
   color: var(--color-primary);
+  margin-bottom: 2.5em;
+  text-shadow: #2387f169 1px 2px 5px;
 }
 
 h3 {
@@ -86,6 +88,7 @@ h3 {
 
 .dark-mode h2 {
   color: var(--color-accent-1);
+  text-shadow: #2387f11c 1px 2px 5px;
 }
 
 header {
@@ -110,6 +113,10 @@ header {
   margin-bottom: 3em;
 }
 
+#headerBar h1 {
+  text-shadow: #d4af3752 2px 1px 5px;
+}
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -117,7 +124,7 @@ nav ul {
   display: none;
   position: fixed;
   /* Fixed positioning to make it overlay */
-  top: 100px;
+  top: 130px;
   right: 0;
   border-radius: 10px;
   z-index: 10;
@@ -140,6 +147,14 @@ nav a {
   color: var(--color-primary);
   margin: 0 10px;
   font-family: var(--font-exo2);
+  transition: 0.5s ease-in-out;
+}
+
+/* disable active menu item of the child elements <a> of class .active in the <li> parent element */
+nav .active a {
+  pointer-events: none;
+  color: var(--color-accent-4) !important;
+
 }
 
 nav a:hover,
@@ -305,14 +320,19 @@ input:checked+.slider::before {
   width: 100%;
   height: 32px;
   border: none;
+  border-radius: 12px;
   padding: 0 10px;
   font-size: 16px;
   box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
 }
 
+.dark-mode .search input {
+  box-shadow: 0px 2px 5px 2px rgb(255 255 255 / 23%);
+}
+
 .search input:focus {
   display: block;
-  z-index: 10;
+  z-index: 8;
 }
 
 .search button {
@@ -407,6 +427,8 @@ footer {
 
 .post-content figure {
   margin: 0;
+  max-width: 40vh;
+  justify-self: center;
 }
 
 .post-content img {
@@ -418,6 +440,10 @@ footer {
   cursor: pointer;
 }
 
+.dark-mode .post-content img {
+  box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.12);
+}
+
 .post-content p {
   font-family: var(--font-open-sans);
   font-size: var(--font-size-16);
@@ -426,10 +452,12 @@ footer {
 
 .post-author-date-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   margin: 10px 5px;
+  gap: 30px;
   padding: 20px;
+  font-size: var(--font-size-12);
 }
 
 .comments {
@@ -514,6 +542,11 @@ footer {
   cursor: pointer;
 }
 
+.comment-form button:hover {
+  background-color: #2387f1;
+  box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
+}
+
 .no-comments {
   text-align: center;
 }
@@ -580,7 +613,7 @@ footer {
   object-fit: contain;
   border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 2px 11px 11px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 15px 8px rgb(255 255 255 / 12%);
 }
 
 @media (min-width: 725px) {
@@ -601,7 +634,8 @@ footer {
   }
 
   h1 {
-    font-size: var(--font-size-36);
+    font-size: var(--font-size-48);
+    font-weight: 600;
   }
 
   h2 {
@@ -631,7 +665,6 @@ footer {
 
   .search input {
     display: block;
-    border-radius: 12px;
   }
 
   .dark-mode nav ul {

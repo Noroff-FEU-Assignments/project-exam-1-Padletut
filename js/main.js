@@ -9,7 +9,11 @@ import { imageModal } from "./imageModal.js";
 import { addNewComment } from "./addComment.js";
 
 // Call the renderHeader function after the DOM has loaded
-document.addEventListener('DOMContentLoaded', renderHeader);
+document.addEventListener('DOMContentLoaded', () => {
+    const activePage = document.title.split(" | ")[1];
+    renderHeader(activePage);
+});
+
 
 // Toggle mobile menu open and close when clicked on the hamburger icon
 document.addEventListener('HeaderContentLoaded', toggleMobileMenu);

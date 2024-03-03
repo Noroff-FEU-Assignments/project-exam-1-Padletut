@@ -14,6 +14,12 @@ export function renderPost(id) {
                 title.classList.add('post-title');
                 title.innerHTML = data.title.rendered;
                 post.appendChild(title);
+                document.title = `SuperCarBlog | ${data.title.rendered}`;
+
+                const content = document.createElement('div');
+                content.classList.add('post-content');
+                content.innerHTML = data.content.rendered;
+                post.appendChild(content);
 
                 const authorDateContainer = document.createElement('div');
                 authorDateContainer.classList.add('post-author-date-container');
@@ -30,13 +36,8 @@ export function renderPost(id) {
                 const year = date.getFullYear();
                 const formattedDate = `${month}.${day}.${year}`;
                 const postDate = document.createElement('span');
-                postDate.innerHTML = `Posted ${formattedDate}`;
+                postDate.innerHTML = formattedDate;
                 authorDateContainer.appendChild(postDate);
-
-                const content = document.createElement('div');
-                content.classList.add('post-content');
-                content.innerHTML = data.content.rendered;
-                post.appendChild(content);
 
                 imageModal();
             });

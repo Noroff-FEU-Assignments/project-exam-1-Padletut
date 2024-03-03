@@ -1,16 +1,16 @@
 // Function to render the header inside <header> tag
 
-export function renderHeader() {
+export function renderHeader(activePage) {
     const header = document.querySelector('header');
     header.innerHTML = `<div id="headerBar">
     <a href="index.html"><h1>SuperCar<span>Blog</span></h1></a>
     <nav>
         <ul>
             <li><i class="fas fa-times close-menu"></i></li>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="about.html">About</a></li>
+            <li${activePage === 'Home' ? ' class="active"' : ''}><a href="index.html">Home</a></li>
+            <li${activePage === 'Blogs' ? ' class="active"' : ''}><a href="blogs.html">Blogs</a></li>
+            <li${activePage === 'Contact' ? ' class="active"' : ''}><a href="contact.html">Contact</a></li>
+            <li${activePage === 'About' ? ' class="active"' : ''}><a href="about.html">About</a></li>
         </ul>
     </nav>
     <div class="search">

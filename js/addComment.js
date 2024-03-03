@@ -1,7 +1,7 @@
 import * as constants from './constants.js';
 import { renderComments } from './renderComments.js';
 import { loadFromLocalStorage, saveToLocalStorage } from './storage/local.js';
-import { addComment } from './fetch.js';
+import { postComment } from './post.js';
 
 // Function to add a new comment to the current post
 export function addNewComment() {
@@ -22,7 +22,7 @@ export function addNewComment() {
             const author = document.querySelector('#author').value;
             const email = document.querySelector('#email').value;
             const content = document.querySelector('#comment').value;
-            const status = await addComment(id, author, email, content);
+            const status = await postComment(id, author, email, content);
             if (status === 201) {
                 renderComments(id, true);
 
