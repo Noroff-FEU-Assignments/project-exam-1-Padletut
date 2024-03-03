@@ -23,10 +23,13 @@ export function renderPosts(renderContainer, loaderContainer, page = 1) {
             postTitle.innerHTML = post.title.rendered;
             postContainer.appendChild(postTitle);
 
+            const imageContainer = document.createElement('figure');
+            postContainer.appendChild(imageContainer);
+
             const postImage = document.createElement('img');
             postImage.src = post._embedded['wp:featuredmedia'][0].source_url;
             postImage.alt = post._embedded['wp:featuredmedia'][0].alt_text;
-            postContainer.appendChild(postImage);
+            imageContainer.appendChild(postImage);
 
             postContainer.appendChild(postAuthorDateContainer);
             const postAuthor = document.createElement('span');

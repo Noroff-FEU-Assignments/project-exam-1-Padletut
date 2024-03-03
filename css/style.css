@@ -35,8 +35,12 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 98vh;
-  padding: 0 20px;
   background-color: var(--color-light-background);
+  margin: 0;
+}
+
+main {
+  margin: 0 20px;
 }
 
 /* Dark Mode */
@@ -100,6 +104,7 @@ header {
   top: 0;
   background-color: var(--color-light-background);
   margin-top: 20px;
+  z-index: 1;
 }
 
 .dark-mode header {
@@ -110,7 +115,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 3em;
+  margin: 20px 20px 3em;
 }
 
 #headerBar h1 {
@@ -171,6 +176,7 @@ nav a:hover,
   width: 60px;
   height: 32px;
   align-self: flex-end;
+  margin-right: 20px;
 }
 
 .toggleswitch input {
@@ -362,19 +368,21 @@ footer {
   cursor: pointer;
 }
 
+.posts figure {
+  margin: 0;
+}
+
 .posts-list {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   justify-content: space-around;
   gap: 20px;
-  padding: 20px;
 }
 
 .posts-list img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  /* height: 200px; */
+  object-fit: contain;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.42);
   transition: transform ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
@@ -639,7 +647,7 @@ footer {
   }
 
   h2 {
-    margin-top: 0;
+    margin-top: 1em;
     font-size: var(--font-size-32);
   }
 
@@ -648,8 +656,8 @@ footer {
     flex-direction: row;
     padding: 0;
     background-color: var(--color-light-background);
-    transform: translate(50%, 50%);
-    top: 50%;
+    transform: translate(50%, 65%);
+    top: 65%;
     right: 50%;
     position: absolute;
   }
@@ -709,12 +717,14 @@ footer {
   .comments {
     max-width: 500px;
     margin: 0 auto;
+    flex: 1;
   }
 
   .comment-form {
     max-width: 500px;
     margin: 0 auto;
     padding: 0;
+    flex: 1;
   }
 
   .comment-form button {
@@ -731,13 +741,17 @@ footer {
     max-width: 80em;
     width: 100%;
   }
+}
 
-  @media (min-width: 1130px) {
+@media (min-width: 1130px) {
 
-    nav ul {
-      position: initial;
-      transform: none;
-    }
+  nav ul {
+    position: initial;
+    transform: none;
   }
 
+
+  #headerBar {
+    margin-bottom: 3em;
+  }
 }

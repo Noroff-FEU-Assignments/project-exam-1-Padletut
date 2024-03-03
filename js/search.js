@@ -6,9 +6,11 @@ export function searchFunction() {
     searchButton.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        searchInput.setAttribute('style', 'display: block');
-        headerH1.setAttribute('style', 'display: none');
-        searchButton.setAttribute('style', 'position: absolute; right: 1px; top: 50%; transform: translateY(-50%); z-index: 9;');
+        if (window.innerWidth < 725) {
+            searchInput.setAttribute('style', 'display: block');
+            headerH1.setAttribute('style', 'display: none');
+            searchButton.setAttribute('style', 'position: absolute; right: 1px; top: 50%; transform: translateY(-50%); z-index: 9;');
+        }
     });
 
     // Close the search input when the user clicks outside of it or search loose focus
