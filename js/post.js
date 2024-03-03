@@ -1,4 +1,4 @@
-import * as constant from './constant.js';
+import * as constant from './constants.js';
 
 // Function to let the user add a new comment need to add basic authorization
 export async function postComment(id, author, email, content) {
