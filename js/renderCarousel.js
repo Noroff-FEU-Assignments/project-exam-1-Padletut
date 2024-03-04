@@ -166,7 +166,6 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
     });
 
 
-
     function dragStart(e) {
         e = e || window.e;
         e.preventDefault();
@@ -184,9 +183,6 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
     function dragAction(e) {
         e = e || window.event;
 
-        // add class 'drag' to the items
-        items.classList.add('drag');
-
         if (e.type == 'touchmove') {
             posX2 = posX1 - e.touches[0].clientX;
             posX1 = e.touches[0].clientX;
@@ -194,7 +190,14 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
             posX2 = posX1 - e.clientX;
             posX1 = e.clientX;
         }
+
+        // Avoid add class drag if not dragging
+        const dragThreshold = 1;
         items.style.left = (items.offsetLeft - posX2) + "px";
+
+        if (Math.abs(posX2) >= dragThreshold) {
+            items.classList.add('drag');
+        }
     }
 
     function dragEnd() {
