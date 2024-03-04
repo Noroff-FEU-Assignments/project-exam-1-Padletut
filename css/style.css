@@ -456,7 +456,7 @@ footer {
 .post-content figure {
   margin: 0;
   max-width: 40vh;
-  justify-self: center;
+  align-self: center;
 }
 
 .post-content img {
@@ -504,11 +504,10 @@ footer {
 
 .post-author-date-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  margin: 10px 5px;
+  margin: 10px 0;
   gap: 30px;
-  padding: 20px;
   font-size: var(--font-size-12);
 }
 
