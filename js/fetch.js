@@ -5,7 +5,6 @@ export async function fetchPosts(page = 1) {
     try {
         const response = await fetch(`${constant.url}/posts?_embed&status=publish&page=${page}`);
         const data = await response.json();
-        console.log(data);
         return data;
     } catch (error) {
         console.error('Error:', error);
