@@ -31,12 +31,6 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         const image = document.createElement('img');
         image.src = post._embedded['wp:featuredmedia'][0].source_url;
         image.alt = post._embedded['wp:featuredmedia'][0].alt_text;
-        image.addEventListener('click', function (event) {
-            if (!items.classList.contains('drag')) {
-                event.preventDefault();
-                window.location.href = `blog.html?id=${post.id}`;
-            }
-        });
         slide.appendChild(image);
 
         const authorDateContainer = document.createElement('div');
@@ -58,6 +52,16 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         const postDate = document.createElement('span');
         postDate.textContent = formattedDate;
         authorDateContainer.appendChild(postDate);
+
+        function navigate(event) {
+            if (!items.classList.contains('drag')) {
+                event.preventDefault();
+                window.location.href = `blog.html?id=${post.id}`;
+            }
+        }
+
+        image.addEventListener('click', navigate);
+        image.addEventListener('touchend', navigate);
 
         items.appendChild(slide);
     });

@@ -685,7 +685,7 @@ footer {
   position: relative;
   width: var(--carousel-width);
   height: var(--carousel-height);
-  z-index: 1;
+  z-index: 0;
 }
 
 .carousel-slides {
@@ -763,7 +763,15 @@ footer {
 }
 
 .carousel-dot.active {
-  background: #000;;
+  background: var(--color-light-text);
+}
+
+.dark-mode .carousel-dot.active {
+  background: var(--color-dark-text);
+}
+
+.dark-mode .carousel-dot {
+  background: var(--color-light-text);
 }
 
 .carousel-dots {
