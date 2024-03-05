@@ -250,7 +250,6 @@ input:checked+.slider::before {
   border-radius: 50%;
 }
 
-
 /* Hamburger Menu */
 
 .hamburger {
@@ -616,10 +615,13 @@ footer {
   text-align: center;
 }
 
-.error-message {
-  padding: 20px;
-  color: var(--color-light-accent-2);
+.form-error-message, .error-message {
+  padding: 5px;
+  height: fit-content;
+  background-color: var(--color-light-accent-2);
+  color: var(--color-dark-text);
   border-radius: 10px;
+  border: var(--color-dark-background) 1px solid;
   text-align: center;
 }
 

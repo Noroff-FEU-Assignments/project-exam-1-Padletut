@@ -10,6 +10,7 @@ export async function postComment(id, author, email, content) {
         errorMessage = document.createElement('p');
         errorMessage.classList.add('error-message');
     }
+
     try {
         const response = await fetch(`${constant.url}/comments`, {
             method: 'POST',
@@ -29,6 +30,11 @@ export async function postComment(id, author, email, content) {
         if (response.status === 409) {
             errorMessage.innerHTML = 'Duplicate comment. Please avoid submitting duplicate messages.';
             constant.commentForm.appendChild(errorMessage);
+
+            // Remove error message after 30 seconds
+            setTimeout(() => {
+                errorMessage.remove();
+            }, 30000);
             return response.status;
         }
 
@@ -40,15 +46,21 @@ export async function postComment(id, author, email, content) {
                 addCommentSuccess.innerHTML = 'Comment added successfully!';
                 constant.commentForm.appendChild(addCommentSuccess);
 
-                // Clear all input fields
+                // Clear all input fields and reset border color
                 constant.commentForm.reset();
+                const inputs = constant.commentForm.querySelectorAll('input, textarea');
+                for (const input of inputs) {
+                    input.style.border = '';
+                }
+
+                // Remove success message after 30 seconds
+                setTimeout(() => {
+                    console.log('Removing success message');
+                    addCommentSuccess.remove();
+                }, 30000);
+
                 return response.status;
             }
-
-            // Remove success message after 30 seconds
-            setTimeout(() => {
-                addCommentSuccess.remove();
-            }, 30000);
         }
         if (!response.ok && response.status !== 409) {
             errorMessage.innerHTML = `Error adding comment. Please try again later. Status: ${response.status}`;
@@ -58,6 +70,7 @@ export async function postComment(id, author, email, content) {
             setTimeout(() => {
                 errorMessage.remove();
             }, 30000);
+
             return response.status;
         }
 
@@ -71,6 +84,7 @@ export async function postComment(id, author, email, content) {
         setTimeout(() => {
             errorMessage.remove();
         }, 30000);
+
         return error.status;
     }
 }
