@@ -7,15 +7,34 @@ export function initCarousel(renderContainer) {
         const sliderItems = document.getElementById('carousel-slides');
         const prev = document.getElementById('carousel-prev');
         const next = document.getElementById('carousel-next');
-        fetchPosts().then(posts => renderCarouselSlides(renderContainer, sliderItems, prev, next, posts));
+
+
+        if (window.innerWidth > 724) {
+            const numSlides = sliderItems.children.length;
+            sliderItems.style.width = `${numSlides * 100}%`; // Adjust 100% to the percentage of one slide relative to the container width
+            sliderItems.style.left = `-${(numSlides / 3) * 100}%`; // Adjust to center the first slide
+            fetchPosts().then(posts => renderCarouselSlides(renderContainer, sliderItems, prev, next, posts));
+        } else {
+            fetchPosts().then(posts => renderCarouselSlides(renderContainer, sliderItems, prev, next, posts));
+        }
     }
 }
 
-function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = false) {
+function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = true) {
 
     // Remove existing slides
     while (items.firstChild) {
         items.firstChild.remove();
+    }
+
+    // Create a separate navigate function
+    function navigate(id) {
+        return function (event) {
+            if (!items.classList.contains('drag')) {
+                event.preventDefault();
+                window.location.href = `blog.html?id=${id}`;
+            }
+        }
     }
 
     // Create slides for posts
@@ -53,15 +72,8 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         postDate.textContent = formattedDate;
         authorDateContainer.appendChild(postDate);
 
-        function navigate(event) {
-            if (!items.classList.contains('drag')) {
-                event.preventDefault();
-                window.location.href = `blog.html?id=${post.id}`;
-            }
-        }
-
-        image.addEventListener('click', navigate);
-        image.addEventListener('touchend', navigate);
+        image.addEventListener('click', navigate(post.id));
+        image.addEventListener('touchend', navigate(post.id));
 
         items.appendChild(slide);
     });
@@ -81,6 +93,7 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         index = 0,
         allowShift = true;
 
+
     // Update firstSlide
     firstSlide = items.firstElementChild;
 
@@ -88,6 +101,12 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
     items.appendChild(cloneFirst);
     items.insertBefore(cloneLast, firstSlide);
     wrapper.classList.add('loaded');
+
+    // Attach event listener to the clones
+    cloneFirst.querySelector('img').addEventListener('click', navigate(latestPosts[0].id));
+    cloneFirst.querySelector('img').addEventListener('touchend', navigate(latestPosts[0].id));
+    cloneLast.querySelector('img').addEventListener('click', navigate(latestPosts[latestPosts.length - 1].id));
+    cloneLast.querySelector('img').addEventListener('touchend', navigate(latestPosts[latestPosts.length - 1].id));
 
     // Mouse events
     items.onmousedown = dragStart;
@@ -109,10 +128,10 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         let autoSlideInterval = setInterval(function () { shiftSlide(1) }, 3000); // Change slides every 3 seconds
 
         // Clear interval on user interaction
-        items.onmousedown = function () {
+        items.addEventListener('mousedown', function (event) {
             clearInterval(autoSlideInterval);
-            dragStart();
-        };
+            dragStart(event);
+        });
 
         prev.addEventListener('click', function () {
             clearInterval(autoSlideInterval);
@@ -122,6 +141,11 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         next.addEventListener('click', function () {
             clearInterval(autoSlideInterval);
             shiftSlide(1);
+        });
+
+        // Add interval back if no user interaction after 5 seconds
+        items.addEventListener('mouseup', function () {
+            autoSlideInterval = setInterval(function () { shiftSlide(1) }, 3000);
         });
     }
 
@@ -152,10 +176,15 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
 
     // Go to slide
     function goToSlide(i) {
-        items.style.left = -((i + 1) * slideSize) + "px";
+        if (window.innerWidth > 724) {
+            items.style.left = -((i) * slideSize) + "px";
+        } else {
+
+            items.style.left = -((i + 1) * slideSize) + "px";
+        }
         index = i;
         updateDots();
-        items.style.transition = "left 0.5s ease-in-out";
+        items.style.transition = "left 0.3s ease-in-out";
     }
 
     // Update dots when slide changes
@@ -226,9 +255,12 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
             if (!action) { posInitial = items.offsetLeft; }
 
             if (dir == 1) {
+
                 items.style.left = (posInitial - slideSize) + "px";
                 index++;
+
             } else if (dir == -1) {
+
                 items.style.left = (posInitial + slideSize) + "px";
                 index--;
             }
@@ -241,15 +273,41 @@ function renderCarouselSlides(wrapper, items, prev, next, posts, autoSlider = fa
         items.classList.remove('shifting');
 
         if (index == -1) {
-            items.style.left = -(slidesLength * slideSize) + "px";
+            if (window.innerWidth > 724) {
+                items.style.left = -((slidesLength - 1) * slideSize) + "px";
+            } else {
+                items.style.left = -(slidesLength * slideSize) + "px";
+            }
             index = slidesLength - 1;
         }
 
         if (index == slidesLength) {
-            items.style.left = -(1 * slideSize) + "px";
+            if (window.innerWidth > 724) {
+                items.style.left = 0;
+            } else {
+                items.style.left = -(1 * slideSize) + "px";
+            }
             index = 0;
         }
-
         allowShift = true;
+        updateCurrentItemStyles();
     }
+
+    // Function to update the style of the carousel items
+    function updateCurrentItemStyles() {
+        if (window.innerWidth > 724) {
+
+            for (let i = 0; i < slides.length; i++) {
+                if (i === index + 1) {
+
+                    slides[i].style.opacity = 1;
+                } else {
+
+                    slides[i].style.opacity = 0.5;
+                }
+            }
+        }
+    }
+
+    updateCurrentItemStyles();
 }
