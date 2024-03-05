@@ -6,7 +6,7 @@ import { searchFunction } from "./search.js";
 import { renderPosts } from "./renderPosts.js";
 import { renderPost } from "./renderPost.js";
 import { addNewComment } from "./addComment.js";
-import { initCarousel } from "./renderCarousel.js";
+import { renderCarousel } from "./carousel.js";
 
 // Call the renderHeader function after the DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,7 +28,7 @@ document.addEventListener('HeaderContentLoaded', searchFunction);
 if (constants.postsListContainer) renderPosts(constants.postsListContainer, constants.loaderContainer);
 
 // Render the carousel
-if (constants.carouselContainer) initCarousel(constants.carouselContainer);
+if (constants.carouselWrapper) renderCarousel(constants.carouselWrapper, constants.loaderContainer);
 
 // Fetch a single post get id from the URL
 if (constants.post) {
