@@ -10,4 +10,4 @@ export const commentForm = document.querySelector('.comment-form');
 // Carousel
 export const isCarousel = document.querySelector('.carousel');
 export const carouselWrapper = document.querySelector('.carousel-wrapper');
-export const carouselDotContainer = document.querySelector('.carousel-dots');
+export const carouselDotContainer = document.querySelector('.carousel-dot-container');
