@@ -90,7 +90,7 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
             });
 
         });
-        handleCarousel(carousel, false);
+        handleCarousel(carousel, true);
     });
 }
 
