@@ -2,6 +2,7 @@ import * as constants from './constants.js';
 import { fetchPosts } from './fetch.js';
 
 export function renderCarousel(carouselWrapper, loaderContainer) {
+
     const carousel = document.createElement('ul');
     carousel.classList.add('carousel');
     carouselWrapper.appendChild(carousel);
@@ -20,12 +21,19 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
     rightArrow.id = 'right-arrow';
     carouselWrapper.appendChild(rightArrow);
 
+    const carouselDotsContainer = document.createElement('div');
+    carouselDotsContainer.classList.add('carousel-dot-container');
+    carouselWrapper.appendChild(carouselDotsContainer);
+
     fetchPosts(page).then(data => {
+
         const latestPosts = data.slice(0, 4); // Get the 4 latest posts
 
         latestPosts.forEach(post => {
             const carouselItem = document.createElement('li');
             carouselItem.classList.add('carousel-item');
+            carouselItem.dataset.index = latestPosts.indexOf(post);
+            carouselItem.dataset.id = post.id;
             carousel.appendChild(carouselItem);
 
             const title = document.createElement('h3');
@@ -42,6 +50,10 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
             image.alt = post._embedded['wp:featuredmedia'][0].alt_text;
             image.draggable = false;
             imageContainer.appendChild(image);
+
+            // Add click event listener to the image
+            addImageClickListener(carousel, image, post.id);
+
 
             const authorDateContainer = document.createElement('div');
             authorDateContainer.classList.add('carousel-author-date');
@@ -62,135 +74,172 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
             postDate.innerHTML = formattedDate;
             authorDateContainer.appendChild(postDate);
 
-            // Add click event listener to image to open the post if not dragging
-            image.addEventListener('click', () => {
-                let isDragging = carousel.classList.contains('dragging');
-                if (!isDragging) {
-                    window.location.href = `blog.html?id=${post.id}`;
-                }
+            const carouseldot = document.createElement('div');
+            carouseldot.classList.add('carousel-dot');
+            carouseldot.dataset.index = latestPosts.indexOf(post);
+            carouselDotsContainer.appendChild(carouseldot);
 
+            carouseldot.addEventListener('click', () => {
+                const index = latestPosts.indexOf(post);
+                const item = carousel.querySelector(`.carousel-item[data-index="${index}"]`);
+                const newPosition = item.offsetLeft;
+                carousel.scrollTo({
+                    left: newPosition,
+                    behavior: 'smooth'
+                });
             });
 
         });
-        generateCarouselDots(carousel, carouselWrapper);
         handleCarousel(carousel, false);
     });
 }
 
-
-function generateCarouselDots(carousel, carouselWrapper) {
-    const carouselItems = Array.from(carousel.querySelectorAll('.carousel-item'));
-    const carouselDots = document.createElement('div');
-    carouselDots.classList.add('carousel-dot-container');
-    carouselWrapper.appendChild(carouselDots);
-
-    carouselItems.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('carousel-dot');
-        dot.dataset.index = index;
-        carouselDots.appendChild(dot);
-
-        updateActiveDot(index + 1);
-
-        dot.addEventListener('click', () => {
-            const scrollPosition = carouselItems.slice(0, (index - 2)).reduce((totalWidth, item) => {
-                const style = window.getComputedStyle(item);
-                const itemWidth = item.offsetWidth + parseInt(style.marginLeft) + parseInt(style.marginRight);
-                return totalWidth + itemWidth;
-            }, 0);
-            carousel.scrollLeft = scrollPosition;
-            updateActiveDot(index);
-        });
+function addImageClickListener(carousel, image, postId) {
+    image.addEventListener('click', () => {
+        let isDragging = carousel.classList.contains('dragging');
+        if (!isDragging) {
+            window.location.href = `blog.html?id=${postId}`;
+        }
     });
 }
 
-// Function to update the active dot when the carousel is scrolled
-function updateActiveDot(index) {
+
+function updateActiveDot(carousel, index) {
     const dots = document.querySelectorAll('.carousel-dot');
-    // Use modulus to ensure the index is always within the range of available dots
-    const dotIndex = (((index) % dots.length) + dots.length) % dots.length;
+    // Convert index to number
+    const indexNumber = Number(index);
     dots.forEach(dot => dot.classList.remove('active'));
-    if (dotIndex >= 0 && dotIndex < dots.length) {
-        dots[dotIndex].classList.add('active');
+    if (indexNumber >= 0 && indexNumber < dots.length) {
+        dots[indexNumber].classList.add('active');
     }
 }
 
 
 // Function to control the carousel
 
-function handleCarousel(isCarousel, isAutoPlay = false) {
+function handleCarousel(carousel, isAutoPlay = false) {
 
-    const firstCardWidth = isCarousel.querySelector('.carousel-item').offsetWidth;
-    const carouselChildrens = [...isCarousel.children];
-    const arrowBtns = document.querySelectorAll('.arrow-button');
+    const firstCardWidth = carousel.querySelector(".carousel-item").offsetWidth;
+    const arrowBtns = document.querySelectorAll(".arrow-button");
+    const carouselChildrens = [...carousel.children];
 
     let isDragging = false, startX, startScrollLeft, timeoutId;
 
-    // Get the number of carousel items that can fit in the carousel at once
-    let cardPerView = Math.round(constants.carouselWrapper.offsetWidth / firstCardWidth);
+    // Get the number of cards that can fit in the carousel at once
+    let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
-    // Insert copies of the last few cards to beginning of carousel for infinite scrolling
+    // Insert copies of the last few cards at the beginning of the carousel for infinite scrolling
     carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
-        isCarousel.insertAdjacentHTML('afterbegin', card.outerHTML);
+        const clone = card.cloneNode(true); // Deep clone the element
+        /* add image click listener to the cloned image */
+        clone.querySelector('img').addEventListener('click', () => {
+            let isDragging = carousel.classList.contains('dragging');
+            if (!isDragging) {
+                window.location.href = `blog.html?id=${card.dataset.id}`;
+            }
+        });
+
+        carousel.prepend(clone); // Insert the clone at the beginning of the carousel
     });
 
-    // Insert copies of the first few cards to end of carousel for infinite scrolling
+    // Insert copies of the first few cards at the end of the carousel for infinite scrolling
     carouselChildrens.slice(0, cardPerView).forEach(card => {
-        isCarousel.insertAdjacentHTML("beforeend", card.outerHTML);
+        const clone = card.cloneNode(true); // Deep clone the element
+        /* add image click listener to the cloned image */
+        clone.querySelector('img').addEventListener('click', () => {
+            let isDragging = carousel.classList.contains('dragging');
+            if (!isDragging) {
+                window.location.href = `blog.html?id=${clone.dataset.id}`;
+            }
+        });
+        carousel.appendChild(clone); // Insert the clone at the end of the carousel
     });
+
+
+
 
     // Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
-    isCarousel.classList.add("no-transition");
-    isCarousel.scrollLeft = firstCardWidth * (cardPerView - 1);
-    isCarousel.classList.remove("no-transition");
+    carousel.classList.add("no-transition");
+    carousel.scrollLeft = carousel.offsetWidth;
+    carousel.classList.remove("no-transition");
 
     // Add event listeners for the arrow buttons to scroll the carousel left and right
+
     arrowBtns.forEach(btn => {
         btn.addEventListener("click", () => {
-            isCarousel.scrollLeft += btn.id == "left-arrow" ? -firstCardWidth : firstCardWidth;
-            // Call updateActiveDot function when the carousel is scrolled
-            isCarousel.addEventListener("scroll", () => {
-                const index = Math.round(isCarousel.scrollLeft / firstCardWidth) + cardPerView - 1;
-                updateActiveDot(index);
-            });
+            carousel.scrollLeft += btn.id == "left-arrow" ? -firstCardWidth : firstCardWidth;
         });
     });
 
+
+
     const dragStart = (e) => {
+        isDragging = true;
         setTimeout(() => {
-            isDragging = true;
-            isCarousel.classList.add("dragging");
-            // Records the initial cursor and scroll position of the carousel
-            startX = e.pageX;
-            startScrollLeft = isCarousel.scrollLeft;
+            carousel.classList.add("dragging");
         }, 100);
+        // Records the initial cursor and scroll position of the carousel
+        startX = e.pageX;
+        startScrollLeft = carousel.scrollLeft;
     }
 
     const dragging = (e) => {
         if (!isDragging) return; // if isDragging is false return from here
         // Updates the scroll position of the carousel based on the cursor movement
-        isCarousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+        carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
     }
 
     const dragStop = () => {
         isDragging = false;
         setTimeout(() => {
-            isCarousel.classList.remove("dragging");
+            carousel.classList.remove("dragging");
         }, 100);
     }
 
     const infiniteScroll = () => {
         // If the carousel is at the beginning, scroll to the end
-        if (isCarousel.scrollLeft <= 40) {
-            isCarousel.classList.add("no-transition");
-            isCarousel.scrollLeft = isCarousel.scrollWidth - (2 * isCarousel.offsetWidth);
-            isCarousel.classList.remove("no-transition");
+        if (carousel.scrollLeft === 0) {
+            carousel.classList.add("no-transition");
+            carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
+            carousel.classList.remove("no-transition");
         }
         // If the carousel is at the end, scroll to the beginning
-        else if (Math.ceil(isCarousel.scrollLeft) === isCarousel.scrollWidth - isCarousel.offsetWidth) {
-            isCarousel.classList.add("no-transition");
-            isCarousel.scrollLeft = isCarousel.offsetWidth;
-            isCarousel.classList.remove("no-transition");
+        else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+            carousel.classList.add("no-transition");
+            carousel.scrollLeft = carousel.offsetWidth;
+            carousel.classList.remove("no-transition");
+        }
+
+
+        // Get all carousel items
+        const items = carousel.querySelectorAll('.carousel-item');
+
+        // Find the carousel item that's closest to the current scroll position
+        let activeIndex = 0;
+        let minDistance = Infinity;
+        items.forEach((item, index) => {
+            const itemStart = item.offsetLeft;
+            const itemEnd = itemStart + item.offsetWidth;
+            const distance = Math.min(Math.abs(carousel.scrollLeft - itemStart), Math.abs(carousel.scrollLeft - itemEnd));
+            if (distance < minDistance) {
+                activeIndex = index;
+                minDistance = distance;
+            }
+        });
+
+        let adjustedIndex = activeIndex - cardPerView;
+
+        if (adjustedIndex < 0) {
+            adjustedIndex = carouselChildrens.length + adjustedIndex;
+        } else if (adjustedIndex >= carouselChildrens.length) {
+            adjustedIndex = adjustedIndex - carouselChildrens.length;
+        }
+
+
+
+        // Update the active dot, but only if the adjusted index is within the range of original items
+        if (adjustedIndex >= 0 && adjustedIndex < carouselChildrens.length) {
+            updateActiveDot(carousel, adjustedIndex);
         }
 
         // Clear existing timeout & start autoplay if mouse is not hovering over carousel
@@ -201,15 +250,14 @@ function handleCarousel(isCarousel, isAutoPlay = false) {
     const autoPlay = () => {
         if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
         // Autoplay the carousel after every 2500 ms
-        timeoutId = setTimeout(() => isCarousel.scrollLeft += firstCardWidth, 2500);
+        timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
     }
     autoPlay();
 
-
-    isCarousel.addEventListener("mousedown", dragStart);
-    isCarousel.addEventListener("mousemove", dragging);
+    carousel.addEventListener("mousedown", dragStart);
+    carousel.addEventListener("mousemove", dragging);
     document.addEventListener("mouseup", dragStop);
-    isCarousel.addEventListener("scroll", infiniteScroll);
+    carousel.addEventListener("scroll", infiniteScroll);
     constants.carouselWrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
     constants.carouselWrapper.addEventListener("mouseleave", autoPlay);
 }
