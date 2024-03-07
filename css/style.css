@@ -768,6 +768,7 @@ i#right-arrow {
   height: 158px;
   width: 158px;
   border-radius: 12px;
+  object-fit: cover;
 }
 
 .carousel::-webkit-scrollbar {
