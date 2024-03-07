@@ -3,10 +3,10 @@ import { renderHeader } from "./ui/header/renderheader.js";
 import { toggleTheme } from "./logic/themetoggler/themetoggler.js";
 import { toggleMobileMenu } from "./logic/togglemobilemenu/togglemobilemenu.js";
 import { searchFunction } from "./logic/search/search.js";
-import { renderPosts } from "./ui/render/renderposts.js";
-import { renderPost } from "./ui/render/renderpost.js";
+import { renderPosts } from "./ui/posts/renderposts.js";
+import { renderPost } from "./ui/post/renderpost.js";
 import { addNewComment } from "./logic/addcomment/addcomment.js";
-import { renderCarousel } from "./carousel.js";
+import { renderCarousel } from "./ui/carousel/rendercarousel.js";
 
 // Call the renderHeader function after the DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {

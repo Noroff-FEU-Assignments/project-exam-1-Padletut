@@ -1,5 +1,5 @@
 import * as constants from '../../constants/constants.js';
-import { renderComments } from '../../ui/render/rendercomments.js';
+import { renderComments } from '../../ui/comments/rendercomments.js';
 import { loadFromLocalStorage, saveToLocalStorage } from '../../storage/local.js';
 import { postComment } from '../posts/post.js';
 import { verifyFormInput } from '../verifyforminputs/verifyforminput.js';
