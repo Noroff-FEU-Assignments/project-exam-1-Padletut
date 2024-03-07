@@ -1,4 +1,4 @@
-import { fetchComments } from './fetch.js';
+import { fetchComments } from '../../api/fetch.js';
 
 // Function to add a new comment to the current post
 

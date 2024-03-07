@@ -1,5 +1,5 @@
-import * as constants from "./constants.js";
-import { loadFromLocalStorage, saveToLocalStorage, removeFromLocalStorage } from "./storage/local.js";
+import * as constants from "../../constants/constants.js";
+import { loadFromLocalStorage, saveToLocalStorage, removeFromLocalStorage } from "../../storage/local.js";
 
 // Export function to toggle between light and dark theme
 

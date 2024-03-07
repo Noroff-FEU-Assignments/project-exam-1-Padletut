@@ -1,4 +1,4 @@
-import { fetchPosts } from "./fetch.js";
+import { fetchPosts } from "../../api/fetch.js";
 
 // Function to render WP posts and display title, featured image, date and author
 

@@ -1,5 +1,5 @@
-import * as constants from './constants.js';
-import { fetchPosts } from './fetch.js';
+import * as constants from './constants/constants.js';
+import { fetchPosts } from './api/fetch.js';
 
 export function renderCarousel(carouselWrapper, loaderContainer) {
 
@@ -79,18 +79,22 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
             carouseldot.dataset.index = latestPosts.indexOf(post);
             carouselDotsContainer.appendChild(carouseldot);
 
-            carouseldot.addEventListener('click', () => {
-                const index = latestPosts.indexOf(post);
-                const item = carousel.querySelector(`.carousel-item[data-index="${index}"]`);
-                const newPosition = item.offsetLeft;
-                carousel.scrollTo({
-                    left: newPosition,
-                    behavior: 'smooth'
-                });
-            });
+            dotsEventListener(carouseldot, latestPosts, post, carousel);
 
         });
         handleCarousel(carousel, true);
+    });
+}
+
+function dotsEventListener(carouseldot, latestPosts, post, carousel) {
+    carouseldot.addEventListener('click', () => {
+        const index = latestPosts.indexOf(post);
+        const item = carousel.querySelector(`.carousel-item[data-index="${index}"]`);
+        const newPosition = item.offsetLeft;
+        carousel.scrollTo({
+            left: newPosition,
+            behavior: 'smooth'
+        });
     });
 }
 

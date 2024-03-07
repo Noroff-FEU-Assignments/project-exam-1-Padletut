@@ -1,4 +1,4 @@
-import * as constant from './constants.js';
+import * as constant from '../constants/constants.js';
 
 // Function to fetch posts try catch
 export async function fetchPosts(page = 1) {

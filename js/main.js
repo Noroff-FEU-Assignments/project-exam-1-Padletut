@@ -1,11 +1,11 @@
-import * as constants from "./constants.js";
-import { renderHeader } from "./header/renderHeader.js";
-import { toggleTheme } from "./themeToggler.js";
-import { toggleMobileMenu } from "./toggleMobileMenu.js";
-import { searchFunction } from "./search.js";
-import { renderPosts } from "./renderPosts.js";
-import { renderPost } from "./renderPost.js";
-import { addNewComment } from "./addComment.js";
+import * as constants from "./constants/constants.js";
+import { renderHeader } from "./ui/header/renderheader.js";
+import { toggleTheme } from "./logic/themetoggler/themetoggler.js";
+import { toggleMobileMenu } from "./logic/togglemobilemenu/togglemobilemenu.js";
+import { searchFunction } from "./logic/search/search.js";
+import { renderPosts } from "./ui/render/renderposts.js";
+import { renderPost } from "./ui/render/renderpost.js";
+import { addNewComment } from "./logic/addcomment/addcomment.js";
 import { renderCarousel } from "./carousel.js";
 
 // Call the renderHeader function after the DOM has loaded

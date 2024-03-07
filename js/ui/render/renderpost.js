@@ -1,6 +1,6 @@
-import { fetchPost } from "./fetch.js";
-import { imageModal } from "./imageModal.js";
-import { renderComments } from "./renderComments.js";
+import { fetchPost } from "../../api/fetch.js";
+import { imageModal } from "../../logic/imagemodal/imagemodal.js";
+import { renderComments } from "./rendercomments.js";
 
 // Function to render a single post using fetchPost function */
 

@@ -1,8 +1,8 @@
-import * as constants from './constants.js';
-import { renderComments } from './renderComments.js';
-import { loadFromLocalStorage, saveToLocalStorage } from './storage/local.js';
-import { postComment } from './post.js';
-import { verifyFormInput } from './verifyFormInput.js';
+import * as constants from '../../constants/constants.js';
+import { renderComments } from '../../ui/render/rendercomments.js';
+import { loadFromLocalStorage, saveToLocalStorage } from '../../storage/local.js';
+import { postComment } from '../posts/post.js';
+import { verifyFormInput } from '../verifyforminputs/verifyforminput.js';
 
 // Function to add a new comment to the current post
 export function addNewComment() {
