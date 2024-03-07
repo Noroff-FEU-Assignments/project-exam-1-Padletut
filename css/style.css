@@ -180,6 +180,7 @@ nav a {
   margin: 0 10px;
   font-family: var(--font-exo2);
   transition: 0.5s ease-in-out;
+  text-transform: uppercase;
 }
 
 /* disable active menu item of the child elements <a> of class .active in the <li> parent element */
