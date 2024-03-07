@@ -26,7 +26,7 @@
   --color-light-background: #F5F5F5;
   --color-dark-background: #121212;
   --color-light-text: #333333;
-  --color-dark-text: #E5E5E5;
+  --color-dark-text: #d9c087;
 
   --carousel-height: 330px;
   --carousel-width: 95vw;
@@ -60,6 +60,10 @@ body {
   min-height: 98vh;
   background-color: var(--color-light-background);
   margin: 0;
+}
+
+.fa-times::before {
+  display: none;
 }
 
 main {
@@ -143,10 +147,6 @@ header {
   justify-content: space-between;
   align-items: center;
   margin: 20px 20px 3em;
-}
-
-#headerBar h1 {
-  text-shadow: #d4af3752 2px 1px 5px;
 }
 
 nav ul {
@@ -481,7 +481,7 @@ footer {
 .image-modal-icon {
   position: relative;
   font-size: 25px;
-  color: var(--color-dark-text);
+  color: var(--color-light-text);
   cursor: pointer;
   bottom: 35px;
   left: 10px;
@@ -588,10 +588,24 @@ footer {
   border: none;
   border-radius: 10px;
   box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
+  background-color: #e8e8ea;
 }
 
 .comment-form textarea {
   height: 50px;
+}
+
+.comment-form label {
+  position: absolute;
+  transition: 0.3s;
+  color: black; 
+  transform: translate(15px, 7px); 
+}
+
+.comment-form input:focus+label, .form-control textarea:focus+label, .comment-form input:not(:placeholder-shown)+label, .form-control textarea:not(:placeholder-shown)+label {
+  top: -20px;
+  font-size: 12px;
+  color: white;
 }
 
 .comment-form button {
@@ -631,7 +645,7 @@ footer {
   padding: 5px;
   height: fit-content;
   background-color: var(--color-light-accent-2);
-  color: var(--color-dark-text);
+  color: white;
   border-radius: 10px;
   border: var(--color-dark-background) 1px solid;
   text-align: center;
