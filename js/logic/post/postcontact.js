@@ -24,31 +24,9 @@ export async function postContactMessage(name, email, subject, message) {
         });
 
         if (response.ok) {
-            let contactMessageSuccess = document.querySelector('.contact-message-success');
-            if (!contactMessageSuccess) {
-                contactMessageSuccess = document.createElement('p');
-                contactMessageSuccess.classList.add('contact-message-success');
-                contactMessageSuccess.innerHTML = 'Thank you for your message. It has been sent.';
-                constant.contactForm.appendChild(contactMessageSuccess);
-
-                // Clear all input fields and reset border color
-                constant.contactForm.reset();
-                const inputs = constant.contactForm.querySelectorAll('input, textarea');
-                for (const input of inputs) {
-                    input.style.border = '';
-                }
-
-                // Remove success message after 30 seconds
-                setTimeout(() => {
-                    contactMessageSuccess.remove();
-                }, 30000);
-
-                return response.status;
-            }
+            return response.status;
         }
     } catch (error) {
-        errorMessage.innerHTML = `There was an error trying to send your message. Please try again later. Status: ${error.status}`;
-        constant.contactForm.appendChild(errorMessage);
         console.error('Error:', error);
 
         // Remove error message after 30 seconds
