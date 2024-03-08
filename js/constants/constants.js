@@ -6,6 +6,7 @@ export const postsListContainer = document.querySelector('.posts-list');
 export const post = document.querySelector('.post');
 export const comments = document.querySelector('.comments');
 export const commentForm = document.querySelector('.comment-form');
+export const contactForm = document.querySelector('.contact-form');
 
 // Carousel
 export const isCarousel = document.querySelector('.carousel');

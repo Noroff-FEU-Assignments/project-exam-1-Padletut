@@ -5,8 +5,9 @@ import { toggleMobileMenu } from "./logic/togglemobilemenu/togglemobilemenu.js";
 import { searchFunction } from "./ui/header/searchbar.js";
 import { renderPosts } from "./ui/posts/renderposts.js";
 import { renderPost } from "./ui/post/renderpost.js";
-import { addNewComment } from "./logic/addcomment/addcomment.js";
+import { addNewComment } from "./ui/addcomment/addcomment.js";
 import { renderCarousel } from "./ui/carousel/rendercarousel.js";
+import { sendMessage } from "./ui/contact/sendmessage.js";
 
 // Call the renderHeader function after the DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,4 +40,8 @@ if (constants.post) {
 // Render add comment form
 if (constants.commentForm) {
     addNewComment();
+}
+
+if (constants.contactForm) {
+    sendMessage();
 }

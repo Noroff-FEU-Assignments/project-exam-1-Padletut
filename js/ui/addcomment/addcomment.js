@@ -1,8 +1,9 @@
 import * as constants from '../../constants/constants.js';
-import { renderComments } from '../../ui/comments/rendercomments.js';
+import { renderComments } from '../comments/rendercomments.js';
 import { loadFromLocalStorage, saveToLocalStorage } from '../../storage/local.js';
-import { postComment } from '../posts/post.js';
-import { verifyFormInput } from '../verifyforminputs/verifyforminput.js';
+import { postComment } from '../../logic/post/postcomment.js';
+import { handleCommentInput } from '../forminputs/handlecommentinput.js';
+import { floatingLabels } from '../forminputs/floatinglabels.js';
 
 // Function to add a new comment to the current post
 export function addNewComment() {
@@ -23,7 +24,7 @@ export function addNewComment() {
             // Validate all input fields
             let isValid = true;
             for (const input of inputs) {
-                handleInput(input);
+                handleCommentInput(input);
                 if (input.parentNode.querySelector('.form-error-message')) {
                     isValid = false;
                     break;
@@ -78,54 +79,16 @@ export function addNewComment() {
         }
     }
 
-    // Function to verify the input fields of the form, and to display error messages in <small> if necessary
-    const handleInput = (eventOrInput) => {
-        const input = eventOrInput.target || eventOrInput;
-        let errorMessage;
-        switch (input.id) {
-            case 'author':
-                errorMessage = 'Please enter your name';
-                break;
-            case 'email':
-                errorMessage = 'Please enter your email';
-                break;
-            case 'comment':
-                errorMessage = 'Please enter a comment';
-                break;
-            default:
-                errorMessage = 'Please fill out this field';
-        }
-        verifyFormInput(input, errorMessage);
-
-        // Remove 'input' event listener if there's no error
-        if (!input.parentNode.querySelector('.form-error-message')) {
-            input.removeEventListener('input', handleInput);
-        }
-    };
-
     const inputs = document.querySelectorAll('input, textarea');
     inputs.forEach(input => {
-        input.addEventListener('blur', () => handleInput(input));
+        input.addEventListener('blur', () => handleCommentInput(input));
 
         // Add 'input' event listener if there's an error
         if (input.parentNode.querySelector('.form-error-message')) {
-            input.addEventListener('input', () => handleInput(input));
+            input.addEventListener('input', () => handleCommentInput(input));
         }
     });
 
     // Input floating label effect
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            const label = input.parentNode.querySelector('label');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            const colorStyle = isDarkMode ? 'color: var(--color-dark-text);' : '';
-            label.setAttribute('style', `transform: translate(15px, -30px); ${colorStyle}`);
-        });
-
-        input.addEventListener('blur', () => {
-            if (input.value === '') {
-                input.parentNode.querySelector('label').setAttribute('style', 'transform: translate(15px, 8px);');
-            }
-        });
-    });
+    floatingLabels(inputs);
 }
