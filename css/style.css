@@ -715,7 +715,7 @@ footer {
   text-align: center;
   line-height: 50px;
   background: var(--color-dark-background);
-  color: var(--color-dark-text); 
+  color: white; 
   border-radius: 50%;
   box-shadow: 0 3px 6px rgba(0,0,0,0.23);
   transform: translateY(-50%); 
