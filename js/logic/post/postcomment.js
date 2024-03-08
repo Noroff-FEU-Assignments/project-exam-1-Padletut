@@ -1,10 +1,7 @@
 import * as constant from '../../constants/constants.js';
 
 // Function to let the user add a new comment need to add basic authorization
-export async function postComment(id, author, email, content) {
-    const username = 'exam';
-    const password = 'jaNe d3U9 yrZI AYWw fAFv l1Pj';
-    const base64Credentials = btoa(`${username}:${password}`);
+export async function postComment(postId, authorName, authorEmail, commentContent) {
     let errorMessage = document.querySelector('.error-message');
     if (!errorMessage) {
         errorMessage = document.createElement('p');
@@ -12,18 +9,16 @@ export async function postComment(id, author, email, content) {
     }
 
     try {
-        const response = await fetch(`${constant.url}/comments`, {
+        const response = await fetch(`${constant.url}/submit-comment`, { // Ensure correct endpoint URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Basic ${base64Credentials}`
             },
             body: JSON.stringify({
-                post: id,
-                author_name: author,
-                author_email: email,
-                content: content,
-                status: 'approved'
+                post_id: postId, // Matches 'comment_post_ID' in PHP
+                author: authorName, // Matches 'comment_author' in PHP
+                email: authorEmail, // Matches 'comment_author_email' in PHP
+                comment: commentContent, // Matches 'comment_content' in PHP
             }),
         });
 

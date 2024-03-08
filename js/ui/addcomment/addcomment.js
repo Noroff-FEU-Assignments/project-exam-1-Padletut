@@ -38,8 +38,9 @@ export function addNewComment() {
             if (isValid) {
                 const status = await postComment(id, author, email, content);
 
+                console.log(status);
 
-                if (status === 201) {
+                if (status === 200) {
                     renderComments(id, true);
 
                     // Disable the submit button for 60 seconds to avoid spam
