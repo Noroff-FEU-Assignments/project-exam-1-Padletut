@@ -38,8 +38,6 @@ export function addNewComment() {
             if (isValid) {
                 const status = await postComment(id, author, email, content);
 
-                console.log(status);
-
                 if (status === 200) {
                     renderComments(id, true);
 
