@@ -657,6 +657,8 @@ footer {
   text-align: center;
 }
 
+/* Form Error Message */
+
 .form-error-message, .error-message {
 	padding: 5px;
 	height: fit-content;
@@ -682,10 +684,10 @@ footer {
   border-bottom: 5px solid var(--color-light-accent-2);
 }
 
-
-.dark-mode .error-message {
-  color: var(--color-dark-accent-2);
+.dark-mode .form-error-message, .error-message {
+  background-color: var(--color-dark-accent-2);
 }
+
 
 @keyframes slideIn {
   from {
@@ -698,6 +700,8 @@ footer {
     opacity: 1;
   }
 }
+
+/* Form error message end */
 
 .modal {
   position: fixed;

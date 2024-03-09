@@ -14,7 +14,7 @@ export function verifyFormInput(input, errorMessage) {
         input.style.border = 'rgba(220, 20, 60, 1) 2px solid';
     } else if (input.type === 'email' && !validateValidEmail(input.value)) {
         const small = document.createElement('small');
-        small.classList.add('error-message');
+        small.classList.add('form-error-message');
         small.textContent = 'Please enter a valid email address';
         input.after(small);
         input.style.border = 'rgba(220, 20, 60, 1) 2px solid';
