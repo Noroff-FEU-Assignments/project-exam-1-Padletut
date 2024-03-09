@@ -1,4 +1,4 @@
-export function searchFunction() {
+export function handleSearchBar() {
     const searchButton = document.querySelector('.search button');
     const searchInput = document.querySelector('.search input');
     const headerH1 = document.querySelector('header h1');

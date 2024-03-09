@@ -1,18 +1,21 @@
-import { verifyFormInput } from './verifyforminput.js';
+import { verifyFormInput } from '../shared/verifyforminput.js';
 
-// Function to verify the input fields of the form, and to display error messages in <small> if necessary
-export const handleCommentInput = (eventOrInput) => {
+/* function to handle contact form input */
+export const handleContactInput = (eventOrInput) => {
     const input = eventOrInput.target || eventOrInput;
     let errorMessage;
     switch (input.id) {
-        case 'author':
+        case 'name':
             errorMessage = 'Please enter your name';
             break;
         case 'email':
             errorMessage = 'Please enter your email';
             break;
-        case 'comment':
-            errorMessage = 'Please enter a comment';
+        case 'subject':
+            errorMessage = 'Please enter a subject';
+            break;
+        case 'message':
+            errorMessage = 'Please enter a message';
             break;
         default:
             errorMessage = 'Please fill out this field';
@@ -21,6 +24,6 @@ export const handleCommentInput = (eventOrInput) => {
 
     // Remove 'input' event listener if there's no error
     if (!input.parentNode.querySelector('.form-error-message')) {
-        input.removeEventListener('input', handleCommentInput);
+        input.removeEventListener('input', handleContactInput);
     }
 };

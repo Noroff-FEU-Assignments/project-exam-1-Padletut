@@ -1,4 +1,4 @@
-import * as constant from '../../constants/constants.js';
+import * as constant from '../constants/constants.js';
 
 // Function to let the user add a new comment need to add basic authorization
 export async function postComment(postId, authorName, authorEmail, commentContent) {
@@ -50,7 +50,6 @@ export async function postComment(postId, authorName, authorEmail, commentConten
 
                 // Remove success message after 30 seconds
                 setTimeout(() => {
-                    console.log('Removing success message');
                     addCommentSuccess.remove();
                 }, 30000);
 

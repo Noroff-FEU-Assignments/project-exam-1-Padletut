@@ -14,8 +14,9 @@ export function renderHeader(activePage) {
         </ul>
     </nav>
     <div class="search">
-        <input type="text" placeholder="Search...">
-        <button type="submit"><i class="fas fa-search"></i></button>
+        <label for="searchInput" class="search-label">Search</label>
+        <input id="searchInput" type="text" placeholder="Search..." aria-label="Search input">
+        <button id="searchButton" type="submit" aria-label="Submit search"><i class="fas fa-search"></i></button>
     </div>
         <div class="hamburger">
             <span></span>

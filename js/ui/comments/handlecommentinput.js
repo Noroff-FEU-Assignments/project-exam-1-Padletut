@@ -1,21 +1,18 @@
-import { verifyFormInput } from './verifyforminput.js';
-/* function to handle contact form input */
+import { verifyFormInput } from '../shared/verifyforminput.js';
 
-export const handleContactInput = (eventOrInput) => {
+// Function to handle comment form input
+export const handleCommentInput = (eventOrInput) => {
     const input = eventOrInput.target || eventOrInput;
     let errorMessage;
     switch (input.id) {
-        case 'name':
+        case 'author':
             errorMessage = 'Please enter your name';
             break;
         case 'email':
             errorMessage = 'Please enter your email';
             break;
-        case 'subject':
-            errorMessage = 'Please enter a subject';
-            break;
-        case 'message':
-            errorMessage = 'Please enter a message';
+        case 'comment':
+            errorMessage = 'Please enter a comment';
             break;
         default:
             errorMessage = 'Please fill out this field';
@@ -24,6 +21,6 @@ export const handleContactInput = (eventOrInput) => {
 
     // Remove 'input' event listener if there's no error
     if (!input.parentNode.querySelector('.form-error-message')) {
-        input.removeEventListener('input', handleContactInput);
+        input.removeEventListener('input', handleCommentInput);
     }
 };

@@ -1,7 +1,4 @@
-// Function to verify the input fields of the form, and to display error messages in <small> if necessary
-/* if error input border set color --color-light-accent-2: rgba(220, 20, 60, 1);
-  if no error input border set color --color-accent-4: rgba(57, 255, 20, 1);
-  <small> .error-message { color: var(--color-accent-4); */
+// Function to verify the input fields of the form and display error messages
 
 export function verifyFormInput(input, errorMessage) {
     /* remove any existing error message <small> element */

@@ -1,6 +1,6 @@
-import { handleContactInput } from '../forminputs/handlecontactinput.js';
-import { floatingLabels } from '../forminputs/floatinglabels.js';
-import { postContactMessage } from '../../logic/post/postcontact.js';
+import { handleContactInput } from './handlecontactinput.js';
+import { floatingLabels } from '../shared/floatinglabels.js';
+import { postContactMessage } from '../../api/postcontact.js';
 
 /* post message to wp for contact form */
 export function sendMessage() {

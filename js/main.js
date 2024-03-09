@@ -2,7 +2,7 @@ import * as constants from "./constants/constants.js";
 import { renderHeader } from "./ui/header/renderheader.js";
 import { toggleTheme } from "./logic/themetoggler/themetoggler.js";
 import { toggleMobileMenu } from "./logic/togglemobilemenu/togglemobilemenu.js";
-import { searchFunction } from "./ui/header/searchbar.js";
+import { handleSearchBar } from "./ui/header/handlesearchbar.js";
 import { renderPosts } from "./ui/posts/renderposts.js";
 import { renderPost } from "./ui/post/renderpost.js";
 import { addNewComment } from "./ui/addcomment/addcomment.js";
@@ -23,7 +23,7 @@ document.addEventListener('HeaderContentLoaded', toggleMobileMenu);
 document.addEventListener('HeaderContentLoaded', toggleTheme);
 
 // Call the search function
-document.addEventListener('HeaderContentLoaded', searchFunction);
+document.addEventListener('HeaderContentLoaded', handleSearchBar);
 
 // Render posts
 if (constants.postsListContainer) renderPosts(constants.postsListContainer, constants.loaderContainer);

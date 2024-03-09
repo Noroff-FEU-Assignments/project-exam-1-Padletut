@@ -23,4 +23,12 @@ export function toggleMobileMenu() {
             hamburger.classList.remove('open');
         }
     });
+
+    /* do not display hamburger::before when the meny is closed */
+    const hamburgerSpan = document.querySelectorAll('.hamburger span');
+    hamburgerSpan.forEach(span => {
+        span.addEventListener('click', () => {
+            span.classList.toggle('open');
+        });
+    });
 }

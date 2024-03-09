@@ -1,5 +1,5 @@
-import { fetchPost } from "../../api/fetch.js";
-import { imageModal } from "../../logic/imagemodal/imagemodal.js";
+import { fetchPost } from "../../api/fetchpost.js";
+import { imageModal } from "../imagemodal/imagemodal.js"
 import { renderComments } from "../comments/rendercomments.js";
 
 // Function to render a single post using fetchPost function */
@@ -24,7 +24,7 @@ export function renderPost(id) {
                 // Create imageModal icon fa-search-plus inside content figure
                 const imageContainer = document.querySelectorAll('.post-content figure');
                 imageContainer.forEach(image => {
-                    const imageModalIcon = document.createElement('i');
+                    const imageModalIcon = document.createElement('figcaption');
                     imageModalIcon.classList.add('fas', 'fa-search-plus', 'image-modal-icon');
                     image.appendChild(imageModalIcon);
                 });

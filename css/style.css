@@ -62,10 +62,6 @@ body {
   margin: 0;
 }
 
-.fa-times::before {
-  display: none;
-}
-
 main {
   margin: 0 20px;
 }
@@ -354,9 +350,20 @@ input:checked+.slider::before {
   height: 32px;
   border: none;
   border-radius: 12px;
-  padding: 0 10px;
+  padding: 0 35px 0 10px;
   font-size: 16px;
   box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
+}
+
+.search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .dark-mode .search input {
@@ -482,7 +489,7 @@ footer {
 .image-modal-icon {
   position: relative;
   font-size: 25px;
-  color: var(--color-light-text);
+  color: var(--color-accent-3);
   cursor: pointer;
   bottom: 35px;
   left: 10px;
@@ -618,6 +625,10 @@ footer {
   cursor: pointer;
 }
 
+.comment-form button:focus-visible {
+  outline: none;
+}
+
 .comment-form button:hover {
   background-color: #2387f1;
   box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
@@ -628,6 +639,7 @@ footer {
 }
 
 .form-control {
+  display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px 0;
@@ -637,6 +649,7 @@ footer {
   display: flex;
 }
 
+
 .add-comment-success {
   padding: 20px;
   color: var(--color-accent-4);
@@ -644,16 +657,31 @@ footer {
   text-align: center;
 }
 
-.form-error-message,
-.error-message {
-  padding: 5px;
-  height: fit-content;
-  background-color: var(--color-light-accent-2);
-  color: white;
-  border-radius: 10px;
-  border: var(--color-dark-background) 1px solid;
-  text-align: center;
+.form-error-message, .error-message {
+	padding: 5px;
+	height: fit-content;
+	background-color: var(--color-light-accent-2);
+	color: white;
+	border-radius: 1px;
+	text-align: center;
+	width: fit-content;
+  box-shadow: 0 6px 2px -2px rgba(211, 77, 77, 0.47);
+  transform: translate(10px, 0);
+  font-size: var(--font-size-12);
 }
+
+.form-error-message:before {
+  content: '';
+  width: 0;
+  height: 0;
+  top: -5px;
+  position: absolute;
+  left: 6px;
+  border-left: 5px solid rgba(0, 0, 0, 0);
+  border-right: 5px solid rgba(0, 0, 0, 0);
+  border-bottom: 5px solid var(--color-light-accent-2);
+}
+
 
 .dark-mode .error-message {
   color: var(--color-dark-accent-2);
@@ -869,6 +897,9 @@ i#right-arrow {
 }
 
 .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin: 15px 0 0;
 }
 
@@ -896,6 +927,10 @@ i#right-arrow {
   background-color: var(--color-accent-1);
   color: black;
   cursor: pointer;
+}
+
+.contact-form button:focus-visible {
+  outline: none;
 }
 
 /* Media Queries */
