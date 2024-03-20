@@ -16,6 +16,7 @@ export function renderHeader(activePage) {
     <div class="search">
         <label for="searchInput" class="search-label">Search</label>
         <input id="searchInput" type="text" placeholder="Search..." aria-label="Search input">
+        <small id="searchSuggestions"></small>
         <button id="searchButton" type="submit" aria-label="Submit search"><i class="fas fa-search"></i></button>
     </div>
         <div class="hamburger">

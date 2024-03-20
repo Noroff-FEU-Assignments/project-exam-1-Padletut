@@ -2,17 +2,20 @@ import { fetchPosts } from "../../api/fetchposts.js";
 
 // Function to render WP posts and display title, featured image, date and author
 
-export function renderPosts(renderContainer, loaderContainer, page = 1) {
+export function renderPosts(renderContainer, loaderContainer, page = 1, searchResults = null) {
 
-    // Select the loader element
-    // Hide the loader
-    if (loaderContainer) {
-        loaderContainer.style.display = 'none';
-    }
+    let searchData;
 
     // Loop through the posts and render the title, featured image, date and author
-    fetchPosts(page).then(data => {
+    if (searchResults) {
+        searchData = Promise.resolve(searchResults);
+    } else {
+        searchData = fetchPosts(page);
+    }
+
+    searchData.then(data => {
         data.forEach(post => {
+
             const postContainer = document.createElement('div');
             const postAuthorDateContainer = document.createElement('div');
             postContainer.classList.add('posts');
@@ -53,16 +56,27 @@ export function renderPosts(renderContainer, loaderContainer, page = 1) {
                 window.location.href = `blog.html?id=${id}`;
             });
         });
-        const showMoreButton = document.createElement('button');
-        showMoreButton.classList.add('show-more-button');
-        showMoreButton.innerHTML = 'Show more';
-        renderContainer.appendChild(showMoreButton);
-        showMorePosts();
+        if (!searchResults) {
+            const showMoreButton = document.createElement('button');
+            showMoreButton.classList.add('show-more-button');
+            showMoreButton.innerHTML = 'Show more';
+            renderContainer.appendChild(showMoreButton);
+            showMorePosts();
 
-        if (data.length < 10) {
-            showMoreButton.remove();
+            if (data.length < 10) {
+                showMoreButton.remove();
+            }
+
+            if (data.length > 0) {
+                // Select the loader element
+                // Hide the loader
+                if (loaderContainer) {
+                    loaderContainer.style.display = 'none';
+                }
+            }
         }
     });
+
 }
 
 // Add 10 more posts when the user click on show more button */

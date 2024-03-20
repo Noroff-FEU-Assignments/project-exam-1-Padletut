@@ -8,6 +8,7 @@ import { renderPost } from "./ui/post/renderpost.js";
 import { addNewComment } from "./ui/addcomment/addcomment.js";
 import { renderCarousel } from "./ui/carousel/rendercarousel.js";
 import { sendMessage } from "./ui/contact/sendmessage.js";
+import { searchListener } from "./logic/search/searchlogic.js";
 
 // Call the renderHeader function after the DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -22,8 +23,13 @@ document.addEventListener('HeaderContentLoaded', toggleMobileMenu);
 // Select the theme toggle slider
 document.addEventListener('HeaderContentLoaded', toggleTheme);
 
-// Call the search function
+// Call the function to handle the search bar
 document.addEventListener('HeaderContentLoaded', handleSearchBar);
+
+// Call the search function
+document.addEventListener('DOMContentLoaded', () => {
+    searchListener();
+});
 
 // Render posts
 if (constants.postsListContainer) renderPosts(constants.postsListContainer, constants.loaderContainer);

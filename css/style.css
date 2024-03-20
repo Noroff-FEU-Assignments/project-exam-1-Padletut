@@ -388,6 +388,26 @@ input:checked+.slider::before {
   color: var(--color-accent-1);
 }
 
+/* Show #searchSuggestions below #searchInput */
+#searchSuggestions {
+  position: absolute;
+  display: none;
+  top: 40px;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-light-background);
+  z-index: 7;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.dark-mode #searchSuggestions {
+  background-color: var(--color-dark-background);
+  box-shadow: 0px 1px 2px 3px rgba(255, 255, 255, 0.12);
+}
+
 /* Footer stay at bottom of page */
 
 footer {
@@ -935,6 +955,22 @@ i#right-arrow {
 
 .contact-form button:focus-visible {
   outline: none;
+}
+
+#about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+#about p {
+  font-family: var(--font-open-sans);
+  font-size: var(--font-size-16);
+  line-height: 1.5;
 }
 
 /* Media Queries */
