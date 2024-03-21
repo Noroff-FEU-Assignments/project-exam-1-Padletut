@@ -10,6 +10,7 @@ export const post = document.querySelector('.post');
 export const comments = document.querySelector('.comments');
 export const commentForm = document.querySelector('.comment-form');
 export const contactForm = document.querySelector('.contact-form');
+export const inputs = document.querySelectorAll('input, textarea');
 
 // Carousel
 export const isCarousel = document.querySelector('.carousel');

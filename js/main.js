@@ -8,6 +8,7 @@ import { renderPost } from "./ui/post/renderpost.js";
 import { addNewComment } from "./ui/addcomment/addcomment.js";
 import { renderCarousel } from "./ui/carousel/rendercarousel.js";
 import { sendMessage } from "./ui/contact/sendmessage.js";
+import { floatingLabels } from "./ui/shared/floatinglabels.js";
 import { searchListener } from "./logic/search/searchlogic.js";
 
 // Call the renderHeader function after the DOM has loaded
@@ -44,10 +45,16 @@ if (constants.post) {
 }
 
 // Render add comment form
-if (constants.commentForm) {
-    addNewComment();
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (constants.commentForm) {
+        floatingLabels(constants.inputs);
+        addNewComment();
+    }
+});
 
-if (constants.contactForm) {
-    sendMessage();
-}
+document.addEventListener('DOMContentLoaded', () => {
+    if (constants.contactForm) {
+        floatingLabels(constants.inputs);
+        sendMessage();
+    }
+});
