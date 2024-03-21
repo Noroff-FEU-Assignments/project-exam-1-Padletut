@@ -80,6 +80,7 @@ function renderSearchSuggestions(searchResults) {
         suggestion.addEventListener('click', () => {
             document.getElementById('searchInput').value = post.title.rendered;
             searchSuggestions.innerHTML = '';
+            searchInput.focus();
         });
     });
 
