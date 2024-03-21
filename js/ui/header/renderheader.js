@@ -3,7 +3,7 @@
 export function renderHeader(activePage) {
     const header = document.querySelector('header');
     header.innerHTML = `<div id="headerBar">
-    <a href="index.html"><h1>SuperCar<span>Blog</span></h1></a>
+    <a href="index.html" id="header-link"><h1>SuperCar<span>Blog</span></h1></a>
     <nav>
         <ul>
             <li><i class="fas fa-times close-menu"></i></li>

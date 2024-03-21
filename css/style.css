@@ -66,6 +66,11 @@ main {
   margin: 0 20px;
 }
 
+#header-link {
+  position: absolute;
+  transform: translateY(-70px);
+}
+
 .loader-container, .comment-loader {
   border: 16px solid var(--color-light-text);
   border-top: 16px solid transparent;
@@ -210,7 +215,7 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: var(--color-primary);
+  color: var(--color-dark-text);
   margin: 0 10px;
   font-family: var(--font-exo2);
   transition: 0.5s ease-in-out;
@@ -382,7 +387,6 @@ input:checked+.slider::before {
 }
 
 .search input {
-  display: none;
   background-color: #e8e8ea;
   width: 100%;
   height: 32px;
@@ -409,14 +413,15 @@ input:checked+.slider::before {
 }
 
 .search input:focus {
-  display: block;
-  z-index: 8;
+  z-index: 0;
 }
 
 .search button {
   border: none;
   padding: 0;
   background-color: transparent;
+  position: absolute;
+  right: 1px;
 }
 
 .search button i {
@@ -1021,13 +1026,13 @@ i#right-arrow {
     align-items: center;
   }
 
-  .search input:focus {
-    display: block;
-    z-index: 0;
-  }
-
   section.post {
     max-width: 80em;
+  }
+
+  #header-link {
+    position: relative;
+    transform: none;
   }
 
   h1 {
@@ -1074,11 +1079,6 @@ i#right-arrow {
 
   #headerBar {
     margin-bottom: 6em;
-  }
-
-  .search button {
-    position: absolute;
-    right: 1px;
   }
 
   .posts-list {

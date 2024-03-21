@@ -1,6 +1,7 @@
 // Function to verify the input fields of the form and display error messages
 
 export function verifyFormInput(input, errorMessage) {
+    if (input.id === 'searchInput') return;
     /* remove any existing error message <small> element */
     const errorMessageContainer = input.parentNode.querySelector('.form-error-message');
     if (errorMessageContainer) errorMessageContainer.remove();
