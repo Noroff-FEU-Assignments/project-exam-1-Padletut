@@ -11,8 +11,6 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
 
     const page = 1;
 
-    loaderContainer.style.display = 'none';
-
     const leftArrow = document.createElement('i');
     leftArrow.classList.add('fas', 'fa-chevron-left', 'arrow-button');
     leftArrow.id = 'left-arrow';
@@ -30,6 +28,10 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
     fetchPosts(page).then(data => {
 
         const latestPosts = data.slice(0, 4); // Get the 4 latest posts
+
+        if (data.length > 0) {
+            loaderContainer.style.display = 'none';
+        }
 
         latestPosts.forEach(post => {
             const carouselItem = document.createElement('li');

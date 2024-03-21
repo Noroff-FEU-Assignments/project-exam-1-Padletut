@@ -3,6 +3,8 @@ export const themeKey = "theme";
 
 export const main = document.querySelector('main');
 export const loaderContainer = document.querySelector('.loader-container');
+export const commentLoader = document.querySelector('.comment-loader');
+export const commentWrapper = document.querySelector('.comments-wrapper');
 export const postsListContainer = document.querySelector('.posts-list');
 export const post = document.querySelector('.post');
 export const comments = document.querySelector('.comments');

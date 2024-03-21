@@ -1,3 +1,4 @@
+import * as constants from "../../constants/constants.js";
 import { fetchPost } from "../../api/fetchpost.js";
 import { imageModal } from "../imagemodal/imagemodal.js"
 import { renderComments } from "../comments/rendercomments.js";
@@ -10,6 +11,11 @@ export function renderPost(id) {
     if (post) {
         fetchPost(id)
             .then(data => {
+
+                if (data.length > 0) {
+                    constants.loaderContainer.style.display = 'none';
+                }
+
                 const title = document.createElement('h2');
                 title.classList.add('post-title');
                 title.innerHTML = data.title.rendered;

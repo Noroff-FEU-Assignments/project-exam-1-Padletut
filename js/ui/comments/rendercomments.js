@@ -1,3 +1,4 @@
+import * as constants from '../../constants/constants.js';
 import { fetchComments } from '../../api/fetchcomments.js';
 
 // Function to add a new comment to the current post
@@ -14,6 +15,9 @@ export function renderComments(id, addComment = false) {
         fetchComments(id)
             .then(data => {
                 if (data.length > 0) {
+
+                    constants.commentLoader.style.display = 'none';
+
                     data.forEach(comment => {
                         const commentContainer = document.createElement('div');
                         commentContainer.classList.add('comment-container');
