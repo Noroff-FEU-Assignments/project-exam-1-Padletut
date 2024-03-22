@@ -1,5 +1,5 @@
 import * as constants from "../../constants/constants.js";
-import { fetchPost } from "../../api/fetchpost.js";
+import { fetchPost } from "../../logic/api/fetchpost.js";
 import { imageModal } from "../imagemodal/imagemodal.js"
 import { renderComments } from "../comments/rendercomments.js";
 
@@ -7,8 +7,8 @@ import { renderComments } from "../comments/rendercomments.js";
 
 export function renderPost(id) {
     const post = document.querySelector('.post');
-    post.innerHTML = '';
     if (post) {
+        post.innerHTML = '';
         fetchPost(id)
             .then(data => {
 

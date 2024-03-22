@@ -1,5 +1,5 @@
 import * as constants from '../../constants/constants.js';
-import { fetchComments } from '../../api/fetchcomments.js';
+import { fetchComments } from '../../logic/api/fetchcomments.js';
 
 // Function to add a new comment to the current post
 

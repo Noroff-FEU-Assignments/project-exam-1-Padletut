@@ -1,7 +1,7 @@
 import * as constants from '../../constants/constants.js';
 import { renderComments } from '../comments/rendercomments.js';
 import { loadFromLocalStorage, saveToLocalStorage } from '../../storage/local.js';
-import { postComment } from '../../api/postcomment.js';
+import { postComment } from '../../logic/api/postcomment.js';
 import { handleCommentInput } from '../comments/handlecommentinput.js';
 import { floatingLabels } from '../shared/floatinglabels.js';
 

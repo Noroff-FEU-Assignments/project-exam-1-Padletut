@@ -1,4 +1,4 @@
-import * as constant from '../constants/constants.js';
+import * as constant from '../../constants/constants.js';
 
 // Function to fetch a single post
 export async function fetchPost(id) {

@@ -1,6 +1,6 @@
 import * as constants from '../../constants/constants.js';
 import { renderPosts } from '../../ui/posts/renderposts.js';
-import { fetchAllPosts } from '../../api/fetchallposts.js';
+import { fetchAllPosts } from '../../logic/api/fetchallposts.js';
 
 /* Function to filter the search results */
 

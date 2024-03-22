@@ -1,4 +1,4 @@
-import * as constant from '../constants/constants.js';
+import * as constant from '../../constants/constants.js';
 
 /* async function to post message to wp for contact form, use basic auth*/
 

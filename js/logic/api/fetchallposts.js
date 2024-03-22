@@ -1,4 +1,4 @@
-import * as constant from '../constants/constants.js';
+import * as constant from '../../constants/constants.js';
 
 /* Function to fetch all posts in every worpdress pages */
 export async function fetchAllPosts() {

@@ -1,4 +1,4 @@
-import * as constant from '../constants/constants.js';
+import * as constant from '../../constants/constants.js';
 
 // Function to fetch comments for the current post
 export async function fetchComments(id) {

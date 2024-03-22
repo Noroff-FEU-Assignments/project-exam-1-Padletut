@@ -1,4 +1,4 @@
-import { fetchPosts } from '../../api/fetchposts.js';
+import { fetchPosts } from '../../logic/api/fetchposts.js';
 import { dotsEventListener } from '../../logic/carousel/dotseventlistener/doteventlistener.js';
 import { imageClickListener } from '../../logic/carousel/imageclicklistener/imageclicklistener.js';
 import { handleCarousel } from '../../logic/carousel/handlecarousel/handlecarousel.js';
