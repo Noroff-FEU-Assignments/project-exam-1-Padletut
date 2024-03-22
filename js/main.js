@@ -42,7 +42,7 @@ if (constants.post) {
 
 // Render add comment form
 document.addEventListener('DOMContentLoaded', () => {
-    if (constants.commentForm) {
+    if (constants.commentForm || constants.contactForm) {
         floatingLabels(constants.inputs);
         addNewComment();
         sendMessage();

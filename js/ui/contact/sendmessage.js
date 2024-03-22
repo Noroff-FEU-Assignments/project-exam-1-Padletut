@@ -4,6 +4,7 @@ import { postContactMessage } from '../../logic/api/postcontact.js';
 
 /* post message to wp for contact form */
 export function sendMessage() {
+
     const form = document.querySelector('.contact-form');
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -72,16 +73,18 @@ export function sendMessage() {
 
     // Check if the submit button should be disabled on page load
     const reEnableTime = localStorage.getItem('submitButtonDisabled');
-    if (reEnableTime && Date.now() < reEnableTime) {
+    const errorMessages = document.querySelectorAll('.form-error-message');
+
+    if (reEnableTime && Date.now() < reEnableTime && errorMessages.length === 0) {
         const submitButton = document.querySelector('#submit-button');
         submitButton.disabled = true;
-        submitButton.setAttribute('style', 'cursor: not-allowed;');
+        submitButton.style.cursor = 'not-allowed';
 
         // Check every second if the button should be re-enabled
         const intervalId = setInterval(() => {
             if (Date.now() > reEnableTime) {
                 submitButton.disabled = false;
-                submitButton.setAttribute('style', 'cursor: pointer;');
+                submitButton.style.cursor = 'pointer';
                 clearInterval(intervalId);
             }
         }, 1000);

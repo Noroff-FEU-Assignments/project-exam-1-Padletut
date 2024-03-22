@@ -93,6 +93,7 @@ main {
   position: inherit;
 }
 
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -749,6 +750,10 @@ footer {
 
 .dark-mode .form-error-message, .error-message {
   background-color: var(--color-dark-accent-2);
+}
+
+.dark-mode .form-error-message:before {
+  border-bottom: 5px solid var(--color-dark-accent-2);
 }
 
 
