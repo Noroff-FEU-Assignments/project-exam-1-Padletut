@@ -75,7 +75,7 @@ export function sendMessage() {
     const reEnableTime = localStorage.getItem('submitButtonDisabled');
     const errorMessages = document.querySelectorAll('.form-error-message');
 
-    if (reEnableTime && Date.now() < reEnableTime && errorMessages.length === 0) {
+    if (reEnableTime && Date.now() < reEnableTime && errorMessages.length > 0 || !reEnableTime && errorMessages.length !== 0) {
         const submitButton = document.querySelector('#submit-button');
         submitButton.disabled = true;
         submitButton.style.cursor = 'not-allowed';

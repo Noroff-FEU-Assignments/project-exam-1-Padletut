@@ -45,6 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (constants.commentForm || constants.contactForm) {
         floatingLabels(constants.inputs);
         addNewComment();
+    }
+
+    if (constants.contactForm) {
+        floatingLabels(constants.inputs);
         sendMessage();
     }
 });

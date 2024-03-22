@@ -3,8 +3,10 @@
 import { validateValidEmail } from "../shared/validatevalidemail.js";
 
 const submitButton = document.querySelector('#submit-button');
-submitButton.style.cursor = 'not-allowed';
-submitButton.disabled = true;
+if (submitButton) {
+    submitButton.style.cursor = 'not-allowed';
+    submitButton.disabled = true;
+}
 
 export function verifyFormInput(input, errorMessage) {
     if (input.id === 'searchInput') return;
@@ -26,12 +28,12 @@ export function verifyFormInput(input, errorMessage) {
     /* enable submit button if all input fields are valid */
     const errorMessages = document.querySelectorAll('.form-error-message');
     const reEnableTime = localStorage.getItem('submitButtonDisabled');
-    if (errorMessages.length === 0 && reEnableTime && Date.now() > reEnableTime) {
+    if (errorMessages.length === 0 && reEnableTime && Date.now() > reEnableTime || errorMessages.length === 0 && !reEnableTime) {
         submitButton.style.cursor = 'pointer';
         submitButton.disabled = false;
+        console.log('submit button enabled');
     } else {
         submitButton.style.cursor = 'not-allowed';
         submitButton.disabled = true;
     }
-
 }

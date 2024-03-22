@@ -1029,7 +1029,10 @@ i#right-arrow {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    max-width: 70em;
+    align-self: center;
+    margin-bottom: 5em;
+}
 
   section.post {
     max-width: 80em;
