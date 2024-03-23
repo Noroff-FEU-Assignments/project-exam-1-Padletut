@@ -50,9 +50,10 @@
   font-family: var(--font-open-sans);
   font-size: var(--font-size-16);
   line-height: 1.5;
-  letter-spacing: 2px;
-  max-width: 30em;
+  letter-spacing: 1.2px;
+  max-width: 25em;
   margin: 0 auto;
+  text-align: justify;
 }
 
 #speed {
@@ -973,8 +974,9 @@ i#right-arrow {
   font-size: var(--font-size-16);
   line-height: 1.5;
   margin: 0 auto;
-  max-width: 500px;
-  letter-spacing: 2px;
+  max-width: 25em;
+  letter-spacing: 1.2px;
+  text-align: justify;
 }
 
 .contact-form {
