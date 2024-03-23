@@ -973,7 +973,7 @@ i#right-arrow {
   font-family: var(--font-open-sans);
   font-size: var(--font-size-16);
   line-height: 1.5;
-  margin: 0 auto;
+  margin: 0 auto 3em auto;
   max-width: 25em;
   letter-spacing: 1.2px;
   text-align: justify;
