@@ -15,6 +15,7 @@ async function searchFilter(searchInput) {
             searchResults.push(post);
         }
     });
+
     return searchResults;
 }
 
@@ -26,15 +27,15 @@ export function searchListener() {
     const searchSuggestions = document.getElementById('searchSuggestions');
 
     const handleSearch = async () => {
+        if (searchInput.value.trim().length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchResults(searchResults);
     };
 
     const handleInput = async () => {
-        if (searchInput.value.length.trim() > 0) {
-            const searchResults = await searchFilter(searchInput);
-            renderSearchSuggestions(searchResults);
-        }
+        if (searchInput.value.trim().length < 1) return;
+        const searchResults = await searchFilter(searchInput);
+        renderSearchSuggestions(searchResults);
     };
 
     searchInput.addEventListener('input', handleInput);
@@ -72,6 +73,7 @@ function renderSearchResults(searchResults) {
 function renderSearchSuggestions(searchResults) {
     const searchSuggestions = document.getElementById('searchSuggestions');
     const searchInput = document.getElementById('searchInput');
+    if (searchInput.value.trim() === '') return;
 
     searchSuggestions.innerHTML = '';
     searchResults.forEach(post => {
