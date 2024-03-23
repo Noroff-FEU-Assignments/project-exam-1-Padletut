@@ -51,11 +51,12 @@
   font-size: var(--font-size-16);
   line-height: 1.5;
   letter-spacing: 2px;
-  width: 50%;
+  max-width: 30em;
+  margin: 0 auto;
 }
 
 #speed {
-  margin-bottom: 0.5em;
+  margin: 1.5em 0;
 }
 
 /* Global Styles */
@@ -573,9 +574,9 @@ footer {
   transition: transform ease-in-out 0.3s, color ease-in-out 0.3s;
 }
 
-.image-modal-icon:hover {
-  color: var(--color-accent-1);
+.wp-block-image:hover .image-modal-icon {
   transform: scale(1.2);
+  color: var(--color-accent-1);
 }
 
 .image-modal-close {
@@ -1029,6 +1030,11 @@ i#right-arrow {
   background-color: var(--color-accent-1);
   color: black;
   cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #2387f1;
+  box-shadow: 0px 1px 2px 3px rgba(0, 0, 0, 0.12);
 }
 
 .contact-form button:focus-visible {
