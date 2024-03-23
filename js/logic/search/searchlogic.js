@@ -27,12 +27,14 @@ export function searchListener() {
     const searchSuggestions = document.getElementById('searchSuggestions');
 
     const handleSearch = async () => {
+        searchInput.value = searchInput.value.trim();
         if (searchInput.value.trim().length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchResults(searchResults);
     };
 
     const handleInput = async () => {
+        searchInput.value = searchInput.value.trim();
         if (searchInput.value.trim().length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchSuggestions(searchResults);
