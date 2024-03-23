@@ -33,7 +33,6 @@ export function verifyFormInput(input, errorMessage) {
     if (errorMessages.length === 0 && reEnableTime && Date.now() > reEnableTime || errorMessages.length === 0 && !reEnableTime) {
         submitButton.style.cursor = 'pointer';
         submitButton.disabled = false;
-        console.log('submit button enabled');
     } else {
         submitButton.style.cursor = 'not-allowed';
         submitButton.disabled = true;
