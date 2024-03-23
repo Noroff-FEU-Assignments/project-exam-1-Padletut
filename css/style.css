@@ -1061,6 +1061,7 @@ i#right-arrow {
   letter-spacing: 1.2px;
   text-align: justify;
   max-width: 25em;
+  margin: 0 25px;
 }
 
 #about-header {
