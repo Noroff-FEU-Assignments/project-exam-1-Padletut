@@ -891,6 +891,7 @@ i#right-arrow {
   flex-direction: column;
   border-radius: 8px;
   gap: 18px;
+  background: var(--color-overlay-background);
 }
 
 .dark-mode .carousel .carousel-item {
