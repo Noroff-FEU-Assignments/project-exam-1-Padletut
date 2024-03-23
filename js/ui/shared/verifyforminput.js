@@ -15,6 +15,8 @@ export function verifyFormInput(input, errorMessage) {
     if (errorMessageContainer) errorMessageContainer.remove();
 
     if (input.type === 'submit') return;
+    //Clear whitespace from input
+    input.value = input.value.trim();
     if (input.value === '' || (input.id === 'name' && input.value.length < 6) || (input.type === 'email' && !validateValidEmail(input.value)) || (input.id === 'subject' && input.value.length < 16) || (input.id === 'message' && input.value.length < 26)) {
         const small = document.createElement('small');
         small.classList.add('form-error-message');
