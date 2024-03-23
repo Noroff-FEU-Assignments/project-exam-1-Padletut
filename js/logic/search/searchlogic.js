@@ -7,6 +7,7 @@ import { fetchAllPosts } from '../../logic/api/fetchallposts.js';
 async function searchFilter(searchInput) {
     const searchValue = searchInput.value.toLowerCase().trim();
     const searchResults = [];
+    if (searchValue.length < 1) return;
     const allPosts = await fetchAllPosts();
 
     allPosts.forEach(post => {
