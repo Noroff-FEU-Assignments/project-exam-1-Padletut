@@ -31,8 +31,8 @@ export function searchListener() {
     };
 
     const handleInput = async () => {
-        const searchResults = await searchFilter(searchInput);
-        if (searchResults.length > 0) {
+        if (searchInput.value.length.trim() > 0) {
+            const searchResults = await searchFilter(searchInput);
             renderSearchSuggestions(searchResults);
         }
     };
