@@ -28,14 +28,14 @@ export function searchListener() {
 
     const handleSearch = async () => {
         searchInput.value = searchInput.value.trim();
-        if (searchInput.value.trim().length < 1) return;
+        if (searchInput.value.length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchResults(searchResults);
     };
 
     const handleInput = async () => {
-        searchInput.value = searchInput.value.trim();
-        if (searchInput.value.trim().length < 1) return;
+        //  searchInput.value = searchInput.value.trim();
+        if (searchInput.value.length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchSuggestions(searchResults);
     };
