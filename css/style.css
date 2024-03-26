@@ -1057,7 +1057,6 @@ i#right-arrow {
   font-size: var(--font-size-16);
   line-height: 1.5;
   letter-spacing: 1.2px;
-  text-align: justify;
   max-width: 25em;
   margin: 0 25px;
 }
