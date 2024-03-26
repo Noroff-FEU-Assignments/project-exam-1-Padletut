@@ -984,8 +984,7 @@ i#right-arrow {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  max-width: 500px;
-  margin: 0 auto;
+  width: 25em; 
   padding: 20px 0;
 }
 
@@ -1185,17 +1184,17 @@ i#right-arrow {
     max-width: 80em;
     width: 100%;
   }
-}
 
-@media (min-width: 1130px) {
+  #contact-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  nav ul {
-    position: initial;
-    transform: none;
   }
 
-
   #headerBar {
-    margin-bottom: 3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
