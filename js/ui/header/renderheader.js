@@ -2,8 +2,14 @@
 
 export function renderHeader(activePage) {
     const header = document.querySelector('header');
-    header.innerHTML = `<div id="headerBar">
+    header.innerHTML = `<div id="header-upper">
     <a href="index.html" id="header-link"><h1>SuperCar<span>Blog</span></h1></a>
+    <label class="toggleswitch">
+                <input type="checkbox">
+                <span class="fas fa-sun slider round"></span>
+    </label>
+    </div>
+    <div id="headerBar">
     <nav>
         <ul>
             <li><i class="fas fa-times close-menu"></i></li>
@@ -25,10 +31,6 @@ export function renderHeader(activePage) {
             <span></span>
         </div>
     </div>
-    <label class="toggleswitch">
-                <input type="checkbox">
-                <span class="fas fa-sun slider round"></span>
-    </label>
     `;
     document.dispatchEvent(new Event('HeaderContentLoaded'));
 }
