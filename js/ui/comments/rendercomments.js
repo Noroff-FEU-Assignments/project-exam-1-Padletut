@@ -34,12 +34,12 @@ export function renderComments(id, addComment = false) {
 
                         const commentDate = document.createElement('span');
                         commentDate.classList.add('comment-date');
-                        // Format the date mm.dd.yyyy
+                        // Format the date dd.mm.yyyy
                         const date = new Date(comment.date);
                         const day = date.getDate().toString().padStart(2, '0');
                         const month = (date.getMonth() + 1).toString().padStart(2, '0');
                         const year = date.getFullYear();
-                        const formattedDate = `${month}.${day}.${year}`;
+                        const formattedDate = `${day}.${month}.${year}`;
                         commentDate.innerHTML = formattedDate;
                         commentAuthorDateContainer.appendChild(commentDate);
 
