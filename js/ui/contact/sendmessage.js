@@ -41,11 +41,11 @@ export function sendMessage() {
                 form.after(successMessage);
                 form.reset();
 
-                // Disable the submit button for 60 seconds to avoid spam
+                // Disable the submit button for 10 seconds to avoid spam
                 const submitButton = document.querySelector('#submit-button');
                 submitButton.disabled = true;
                 submitButton.setAttribute('style', 'cursor: not-allowed;');
-                const time = Date.now() + 60000;
+                const time = Date.now() + 10000;
                 localStorage.setItem('submitButtonDisabled', time);
             } else {
                 const errorMessage = document.createElement('p');
