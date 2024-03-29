@@ -821,7 +821,7 @@ footer {
 }
 
 .modal img {
-  max-width: 70vh;
+  max-width: 85vw;
   max-height: 90vh;
   object-fit: contain;
   border-radius: 12px;
