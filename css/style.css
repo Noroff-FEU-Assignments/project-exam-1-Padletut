@@ -563,6 +563,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  row-gap: 100px;
 }
 
 .post-content figure {
@@ -1194,7 +1195,6 @@ i#right-arrow {
     display: grid;
     align-items: self-start;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
   }
 
   .post-content img {

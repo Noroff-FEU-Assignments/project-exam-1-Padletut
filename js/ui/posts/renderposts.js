@@ -39,12 +39,12 @@ export function renderPosts(renderContainer, loaderContainer, page = 1, searchRe
             postAuthor.innerHTML = `By ${post._embedded.author[0].name}`;
             postAuthorDateContainer.appendChild(postAuthor);
 
-            // Format the date mmm.dd.yyyy
+            // Format the date dd.mm.yyyy
             const date = new Date(post.date);
             const day = date.getDate().toString().padStart(2, '0');
             const month = (date.getMonth() + 1).toString().padStart(2, '0');
             const year = date.getFullYear();
-            const formattedDate = `${month}.${day}.${year}`;
+            const formattedDate = `${day}.${month}.${year}`;
 
             const postDate = document.createElement('span');
             postDate.innerHTML = formattedDate;
