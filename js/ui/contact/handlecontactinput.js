@@ -54,7 +54,6 @@ export const handleContactInput = (eventOrInput) => {
 
 function removeErrorMessage(input) {
     // Remove error messages after 5 seconds and remove input frame color
-    console.log(input.value.length);
     setTimeout(() => {
         const errorMessageElement = input.parentNode.querySelector('.form-error-message');
         if (errorMessageElement) {
