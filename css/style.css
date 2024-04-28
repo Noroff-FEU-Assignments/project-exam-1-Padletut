@@ -121,18 +121,6 @@ main {
   }
 }
 
-/* Dark Mode */
-
-.dark-mode {
-  background-color: var(--color-dark-background);
-  color: var(--color-dark-text);
-  transition: background-color 0.5s;
-}
-
-.dark-mode a {
-  color: var(--color-dark-text);
-}
-
 a {
   font-family: var(--font-exo2);
   font-size: var(--font-size-27);
@@ -168,15 +156,6 @@ h3 {
   color: var(--color-light-accent-2);
 }
 
-.dark-mode h3 {
-  color: var(--color-dark-accent-2);
-}
-
-.dark-mode h2 {
-  color: var(--color-accent-1);
-  text-shadow: #2387f11c 1px 2px 5px;
-}
-
 #header-upper {
   display: flex;
   justify-content: space-between;
@@ -198,10 +177,6 @@ header {
   padding: 25px 25px 0;
 }
 
-.dark-mode header {
-  background-color: var(--color-dark-background);
-}
-
 #header-bar {
   display: flex;
   justify-content: space-between;
@@ -209,6 +184,9 @@ header {
   margin: 20px 0 3em;
   width: 100%;
 }
+
+
+/* Navigation */
 
 nav {
   position: absolute;
@@ -220,23 +198,13 @@ nav ul {
   padding: 20%;
   display: none;
   position: fixed;
-  /* Fixed positioning to make it overlay */
   top: 130px;
   right: 0;
   border-radius: 10px;
   z-index: 10;
-  /* Higher z-index to be on top of other content */
   background-color: var(--color-dark-background);
   align-items: center;
   flex-direction: column;
-}
-
-.dark-mode nav ul {
-  background-color: var(--color-light-background);
-}
-
-.dark-mode nav ul a {
-  color: var(--color-light-text);
 }
 
 nav a {
@@ -255,15 +223,48 @@ nav .active a {
 
 }
 
-.dark-mode .active a {
-  color: var(--color-accent-4);
-
-}
-
 nav a:hover,
 .dark-mode nav a:hover {
   color: var(--color-secondary);
   text-decoration: underline;
+}
+
+/* Dark Mode */
+
+.dark-mode {
+  background-color: var(--color-dark-background);
+  color: var(--color-dark-text);
+  transition: background-color 0.5s;
+}
+
+.dark-mode a {
+  color: var(--color-dark-text);
+}
+
+.dark-mode h3 {
+  color: var(--color-dark-accent-2);
+}
+
+.dark-mode h2 {
+  color: var(--color-accent-1);
+  text-shadow: #2387f11c 1px 2px 5px;
+}
+
+.dark-mode header {
+  background-color: var(--color-dark-background);
+}
+
+.dark-mode nav ul {
+  background-color: var(--color-light-background);
+}
+
+.dark-mode nav ul a {
+  color: var(--color-light-text);
+}
+
+.dark-mode .active a {
+  color: var(--color-accent-4);
+
 }
 
 /* Toggle Switch */
@@ -512,7 +513,6 @@ footer {
 
 .posts-list img {
   width: 100%;
-  /* height: 200px; */
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.42);
@@ -580,6 +580,23 @@ footer {
   cursor: pointer;
 }
 
+.post-content p {
+  font-family: var(--font-open-sans);
+  font-size: var(--font-size-16);
+  line-height: 1.5;
+}
+
+.post-author-date-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 25px 0;
+  gap: 30px;
+  font-size: var(--font-size-12);
+}
+
+/* Image Modal */
+
 .image-modal-icon {
   position: relative;
   font-size: 25px;
@@ -608,20 +625,7 @@ footer {
   box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.12);
 }
 
-.post-content p {
-  font-family: var(--font-open-sans);
-  font-size: var(--font-size-16);
-  line-height: 1.5;
-}
-
-.post-author-date-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 25px 0;
-  gap: 30px;
-  font-size: var(--font-size-12);
-}
+/* Comments */
 
 .comments {
   display: flex;
@@ -704,7 +708,7 @@ footer {
   transform: translate(15px, 7px); 
 }
 
-.comment-form input:focus+label, .form-control textarea:focus+label, .comment-form input:not(:placeholder-shown)+label, .form-control textarea:not(:placeholder-shown)+label {
+.comment-form input:focus+label, .comment__form-control textarea:focus+label, .comment-form input:not(:placeholder-shown)+label, .comment__form-control textarea:not(:placeholder-shown)+label {
   top: -20px;
   font-size: 12px;
   color: white;
@@ -732,14 +736,14 @@ footer {
   text-align: center;
 }
 
-.form-control {
+.comment__form-control {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 20px 0;
 }
 
-.form-control input, .form-control textarea {
+.comment__form-control input, .comment__form-control textarea {
   display: flex;
 }
 
@@ -1033,7 +1037,7 @@ i#right-arrow {
   transform: translate(15px, 7px); 
 }
 
-.contact-form input:focus+label, .form-control textarea:focus+label, .contact-form input:not(:placeholder-shown)+label, .form-control textarea:not(:placeholder-shown)+label {
+.contact-form input:focus+label, .comment__form-control textarea:focus+label, .contact-form input:not(:placeholder-shown)+label, .comment__form-control textarea:not(:placeholder-shown)+label {
   top: -20px;
   font-size: 12px;
   color: white;
