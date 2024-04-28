@@ -721,6 +721,7 @@ footer {
   background-color: var(--color-accent-1);
   color: black;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .comment-form button:focus-visible {
@@ -804,6 +805,8 @@ footer {
 }
 
 /* Form error message end */
+
+/* Image Modal */
 
 .modal {
   position: fixed;
@@ -1019,7 +1022,7 @@ i#right-arrow {
   width: 100%;
 }
 
-.input-group {
+.contact-form__input-group {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1050,6 +1053,7 @@ i#right-arrow {
   background-color: var(--color-accent-1);
   color: black;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .contact-form button:hover {
@@ -1060,6 +1064,8 @@ i#right-arrow {
 .contact-form button:focus-visible {
   outline: none;
 }
+
+/* About Page */
 
 #about {
   display: flex;
@@ -1120,6 +1126,8 @@ i#right-arrow {
     font-size: var(--font-size-32);
   }
 
+  /* Header */
+
   header {
     width: 100%;
     padding: 25px 0;
@@ -1135,6 +1143,8 @@ i#right-arrow {
     justify-content: space-between;
     align-items: center;
   }
+
+  /* Navigation */
 
   nav {
     position: relative;
@@ -1155,10 +1165,22 @@ i#right-arrow {
     position: absolute;
   }
 
+  .dark-mode nav ul {
+    background-color: var(--color-dark-background);
+  }
+
+  .dark-mode nav ul a {
+    color: var(--color-dark-text);
+  }
+
+  /* Toggle Switch */
+
   .toggleswitch {
     position: absolute;
     right: 0;
 }
+
+  /* Hamburger Menu */
 
   .hamburger {
     display: none;
@@ -1168,6 +1190,8 @@ i#right-arrow {
   .dark-mode .close-menu {
     opacity: 0;
   }
+  
+  /* Search Bar */
 
   .search {
     align-self: flex-end;
@@ -1177,17 +1201,11 @@ i#right-arrow {
     display: block;
   }
 
-  .dark-mode nav ul {
-    background-color: var(--color-dark-background);
-  }
-
-  .dark-mode nav ul a {
-    color: var(--color-dark-text);
-  }
-
   #header-bar {
     margin-bottom: 6em;
   }
+
+  /* Posts list */
 
   .posts-list {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1216,6 +1234,8 @@ i#right-arrow {
     position: absolute;
 }
 
+  /* Comments */
+
   .comments {
     max-width: 500px;
     margin: 0 auto;
@@ -1243,6 +1263,8 @@ i#right-arrow {
     max-width: 80em;
     width: 100%;
   }
+
+  /* Contact Page */
 
   #contact-main {
     display: flex;
