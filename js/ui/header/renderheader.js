@@ -9,7 +9,7 @@ export function renderHeader(activePage) {
                 <span class="fas fa-sun slider round"></span>
     </label>
     </div>
-    <div id="headerBar">
+    <div id="header-bar">
     <nav>
         <ul>
             <li><i class="fas fa-times close-menu"></i></li>
