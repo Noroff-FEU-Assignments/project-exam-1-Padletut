@@ -8,7 +8,7 @@ import { addNewComment } from "./ui/addcomment/addcomment.js";
 import { renderCarousel } from "./ui/carousel/rendercarousel.js";
 import { sendMessage } from "./ui/contact/sendmessage.js";
 import { floatingLabels } from "./ui/shared/floatinglabels.js";
-import { searchListener } from "./logic/search/searchlogic.js";
+import { searchListener } from "./logic/search/searchlistener.js";
 
 // Call the renderHeader function after the DOM has loaded
 document.addEventListener('DOMContentLoaded', () => {
