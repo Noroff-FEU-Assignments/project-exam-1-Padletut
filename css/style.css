@@ -544,6 +544,8 @@ footer {
   color: black;
   padding: 10px 0;
   font-size: var(--font-size-16);
+  height: fit-content;
+  align-self: center;
 }
 
 .show-more-button:hover {
