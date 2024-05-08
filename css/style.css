@@ -498,6 +498,15 @@ footer {
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
+  background: var(--color-overlay-background);
+  border-radius: 8px;
+  border-style: none
+  ;
+  padding: 30px;
+}
+
+.dark-mode .posts {
+  background: #161616;
 }
 
 .posts figure {
@@ -529,6 +538,10 @@ footer {
   justify-content: space-between;
   align-items: center;
   margin: 10px 5px;
+}
+
+.dark-mode .post-author-date span {
+  color: var(--color-dark-text);
 }
 
 /* Show more button */

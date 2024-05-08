@@ -16,7 +16,7 @@ export function renderPosts(renderContainer, loaderContainer, page = 1, searchRe
     searchData.then(data => {
         data.forEach(post => {
 
-            const postContainer = document.createElement('div');
+            const postContainer = document.createElement('button');
             const postAuthorDateContainer = document.createElement('div');
             postContainer.classList.add('posts');
             postAuthorDateContainer.classList.add('post-author-date');
@@ -63,6 +63,7 @@ export function renderPosts(renderContainer, loaderContainer, page = 1, searchRe
             renderContainer.appendChild(showMoreButton);
             showMorePosts();
 
+            // Remove the show more button if the data length is less than 10
             if (data.length < 10) {
                 showMoreButton.remove();
             }
