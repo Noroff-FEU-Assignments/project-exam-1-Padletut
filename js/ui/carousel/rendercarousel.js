@@ -14,6 +14,8 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
     const leftArrow = document.createElement('i');
     leftArrow.classList.add('fas', 'fa-chevron-left', 'arrow-button');
     leftArrow.id = 'left-arrow';
+    leftArrow.role = 'button';
+    leftArrow.tabIndex = 5;
     carouselWrapper.prepend(leftArrow);
 
     const rightArrow = document.createElement('i');
@@ -36,6 +38,7 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
         latestPosts.forEach(post => {
             const carouselItem = document.createElement('li');
             carouselItem.classList.add('carousel-item');
+            carouselItem.role = 'button';
             carouselItem.dataset.index = latestPosts.indexOf(post);
             carouselItem.dataset.id = post.id;
             carousel.appendChild(carouselItem);
