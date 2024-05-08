@@ -28,11 +28,11 @@ export function renderPost(id) {
                 post.appendChild(content);
 
                 setTimeout(() => {
-                    const figures = document.querySelectorAll('.post-content figure');
-                    figures.forEach(figure => {
-                        figure.setAttribute('tabindex', '0');
-                        figure.addEventListener('focus', () => {
-                            figure.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    const images = document.querySelectorAll('.post-content figure img');
+                    images.forEach(image => {
+                        image.setAttribute('tabindex', '0');
+                        image.addEventListener('focus', () => {
+                            image.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                         });
                     });
                 }, 1000);

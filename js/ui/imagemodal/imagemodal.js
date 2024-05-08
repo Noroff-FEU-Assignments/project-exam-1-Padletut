@@ -1,7 +1,7 @@
 export function imageModal() {
     const postContent = document.querySelector('.post-content');
     if (postContent) {
-        const handleClick = (event) => {
+        const openModal = (event) => {
             let target = event.target.closest('img, .image-modal-icon');
             if (target) {
                 // If the target is the .image-modal-icon, find the associated img
@@ -23,17 +23,15 @@ export function imageModal() {
                 const closeButton = document.createElement('i');
                 closeButton.classList.add('fas', 'fa-times', 'image-modal-close');
                 closeButton.addEventListener('click', () => {
-                    modal.style.opacity = "0";
-                    setTimeout(() => {
-                        modal.remove();
-                    }, 800);
+                    closeModal(modal);
                 });
                 modal.appendChild(closeButton);
 
-                // Wait for the modal to be appended to the DOM before adding the image
-                setTimeout(() => {
-                    modal.style.opacity = "1";
-                }, 0);
+                // Create modal content and set focus to it
+                modal.style.opacity = "1";
+                modal.setAttribute('tabindex', '0');
+                modal.focus();
+
 
                 const img = document.createElement('img');
                 img.src = target.src;
@@ -41,10 +39,13 @@ export function imageModal() {
                 modal.appendChild(img);
 
                 modal.addEventListener('click', () => {
-                    modal.style.opacity = "0";
-                    setTimeout(() => {
-                        modal.remove();
-                    }, 800);
+                    closeModal(modal);
+                });
+
+                modal.addEventListener('keydown', (event) => {
+                    if (event.key === 'Escape') {
+                        closeModal(modal);
+                    }
                 });
             }
         };
@@ -52,7 +53,19 @@ export function imageModal() {
         // Add event listener to all elements with class .wp-block-image
         const parentElements = document.querySelectorAll('.wp-block-image');
         parentElements.forEach(parentElement => {
-            parentElement.addEventListener('click', handleClick);
+            parentElement.addEventListener('click', (event) => openModal(event));
+            parentElement.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    openModal(event);
+                }
+            });
         });
     }
+}
+
+function closeModal(modal) {
+    modal.style.opacity = "0";
+    setTimeout(() => {
+        modal.remove();
+    }, 800);
 }
