@@ -7,15 +7,16 @@ export function toggleTheme() {
 
     // Add event listener to the theme toggle button
 
-    const themeToggleButton = document.querySelector('.slider');
+    const themeToggleButton = document.querySelector('.toggleswitch input');
     themeToggleButton.addEventListener('click', () => {
-        const theme = document.body;
-        theme.classList.toggle('dark-mode');
-        if (theme.classList.contains('dark-mode')) {
-            removeFromLocalStorage(constants.themeKey);
-            saveToLocalStorage(constants.themeKey, theme.classList);
-        } else {
-            removeFromLocalStorage(constants.themeKey);
+        toggleDarkMode();
+    });
+
+    themeToggleButton.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            themeToggleButton.checked = !themeToggleButton.checked;
+            toggleDarkMode();
         }
     });
 
@@ -27,5 +28,16 @@ export function toggleTheme() {
             const inputToggle = document.querySelector('.toggleswitch input');
             inputToggle.checked = true;
         }
+    }
+}
+
+function toggleDarkMode() {
+    const theme = document.body;
+    theme.classList.toggle('dark-mode');
+    if (theme.classList.contains('dark-mode')) {
+        removeFromLocalStorage(constants.themeKey);
+        saveToLocalStorage(constants.themeKey, theme.classList);
+    } else {
+        removeFromLocalStorage(constants.themeKey);
     }
 }
