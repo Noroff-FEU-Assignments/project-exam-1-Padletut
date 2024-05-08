@@ -27,6 +27,16 @@ export function renderPost(id) {
                 content.innerHTML = data.content.rendered;
                 post.appendChild(content);
 
+                setTimeout(() => {
+                    const figures = document.querySelectorAll('.post-content figure');
+                    figures.forEach(figure => {
+                        figure.setAttribute('tabindex', '0');
+                        figure.addEventListener('focus', () => {
+                            figure.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        });
+                    });
+                }, 1000);
+
                 // Create imageModal icon fa-search-plus inside content figure
                 const imageContainer = document.querySelectorAll('.post-content figure');
                 imageContainer.forEach(image => {
