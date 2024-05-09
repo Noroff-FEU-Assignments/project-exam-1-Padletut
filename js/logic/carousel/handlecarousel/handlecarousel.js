@@ -79,18 +79,20 @@ export function handleCarousel(carousel, isAutoPlay = false) {
         }
 
         // Delay the calculation of the active card index until after scrollLeft has been updated
-        setTimeout(() => {
-            // Calculate the index of the active card
-            const activeCardIndex = Math.round((carousel.scrollLeft + firstCardWidth / 2) / firstCardWidth);
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+            setTimeout(() => {
+                // Calculate the index of the active card
+                const activeCardIndex = Math.round((carousel.scrollLeft + firstCardWidth / 2) / firstCardWidth);
 
-            // Find the image of the active card
-            const activeImage = carousel.querySelectorAll('img')[activeCardIndex];
+                // Find the image of the active card
+                const activeImage = carousel.querySelectorAll('img')[activeCardIndex];
 
-            // Focus the active image
-            if (activeImage) {
-                activeImage.focus();
-            }
-        }, 0);
+                // Focus the active image
+                if (activeImage) {
+                    activeImage.focus();
+                }
+            }, 0);
+        }
     });
 
     const dragStart = (e) => {
@@ -169,6 +171,11 @@ export function handleCarousel(carousel, isAutoPlay = false) {
 
     const autoPlay = () => {
         if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+
+        // Check if any of the carousel images currently has focus
+        const hasFocus = Array.from(carousel.querySelectorAll('img')).some(img => img === document.activeElement);
+        if (hasFocus) return; // Return if an image has focus
+
         // Autoplay the carousel after every 2500 ms
         timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
     }
