@@ -62,6 +62,12 @@ export function handleCarousel(carousel, isAutoPlay = false) {
         btn.addEventListener("click", () => {
             carousel.scrollLeft += btn.id == "left-arrow" ? -firstCardWidth : firstCardWidth;
         });
+
+        btn.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                carousel.scrollLeft += btn.id == "left-arrow" ? -firstCardWidth : firstCardWidth;
+            }
+        });
     });
 
 
