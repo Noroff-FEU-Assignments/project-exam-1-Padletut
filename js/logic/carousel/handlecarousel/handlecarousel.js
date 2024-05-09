@@ -25,6 +25,13 @@ export function handleCarousel(carousel, isAutoPlay = false) {
             }
         });
 
+        // add image click listener to the cloned image for Enter key press
+        clone.querySelector('img').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                window.location.href = `blog.html?id=${card.dataset.id}`;
+            }
+        });
+
         carousel.prepend(clone); // Insert the clone at the beginning of the carousel
     });
 

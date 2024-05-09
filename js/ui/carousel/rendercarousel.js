@@ -38,7 +38,6 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
         latestPosts.forEach(post => {
             const carouselItem = document.createElement('li');
             carouselItem.classList.add('carousel-item');
-            carouselItem.tabIndex = '0';
             carouselItem.dataset.index = latestPosts.indexOf(post);
             carouselItem.dataset.id = post.id;
             carousel.appendChild(carouselItem);
@@ -56,6 +55,7 @@ export function renderCarousel(carouselWrapper, loaderContainer) {
             image.src = post._embedded['wp:featuredmedia'][0].source_url;
             image.alt = post._embedded['wp:featuredmedia'][0].alt_text;
             image.draggable = false;
+            image.tabIndex = '0';
             imageContainer.appendChild(image);
 
             // Add click event listener to the image
