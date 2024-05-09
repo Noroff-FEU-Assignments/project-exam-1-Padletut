@@ -27,6 +27,7 @@ export function renderPosts(renderContainer, loaderContainer, page = 1, searchRe
             postContainer.appendChild(postTitle);
 
             const imageContainer = document.createElement('figure');
+            imageContainer.ariaLabel = post._embedded['wp:featuredmedia'][0].alt_text;
             postContainer.appendChild(imageContainer);
 
             const postImage = document.createElement('img');
