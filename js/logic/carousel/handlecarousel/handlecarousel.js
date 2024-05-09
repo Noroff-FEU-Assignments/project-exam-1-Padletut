@@ -70,7 +70,28 @@ export function handleCarousel(carousel, isAutoPlay = false) {
         });
     });
 
+    // Add event listeners for the left and right arrow keys on the keyboard
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") {
+            carousel.scrollLeft -= firstCardWidth;
+        } else if (e.key === "ArrowRight") {
+            carousel.scrollLeft += firstCardWidth;
+        }
 
+        // Delay the calculation of the active card index until after scrollLeft has been updated
+        setTimeout(() => {
+            // Calculate the index of the active card
+            const activeCardIndex = Math.round((carousel.scrollLeft + firstCardWidth / 2) / firstCardWidth);
+
+            // Find the image of the active card
+            const activeImage = carousel.querySelectorAll('img')[activeCardIndex];
+
+            // Focus the active image
+            if (activeImage) {
+                activeImage.focus();
+            }
+        }, 0);
+    });
 
     const dragStart = (e) => {
         isDragging = true;
