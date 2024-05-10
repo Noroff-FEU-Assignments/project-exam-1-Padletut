@@ -1,4 +1,5 @@
 import { fetchPosts } from "../../logic/api/fetchposts.js";
+import { showMorePosts } from "./showmoreposts.js";
 
 // Function to render WP posts and display title, featured image, date and author
 
@@ -77,21 +78,5 @@ export function renderPosts(renderContainer, loaderContainer, page = 1, searchRe
                 }
             }
         }
-    });
-
-}
-
-// Add 10 more posts when the user click on show more button */
-
-function showMorePosts() {
-    const showMoreButton = document.querySelector('.show-more-button');
-    const renderContainer = document.querySelector('.posts-list');
-    const loaderContainer = document.querySelector('.loader-container');
-    let page = 1;
-
-    showMoreButton.addEventListener('click', () => {
-        page++;
-        renderPosts(renderContainer, loaderContainer, page);
-        showMoreButton.remove(); // Remove the show more button after clicking
     });
 }

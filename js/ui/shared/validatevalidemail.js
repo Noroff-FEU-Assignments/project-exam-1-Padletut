@@ -1,4 +1,4 @@
 export function validateValidEmail(email) {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
+    const validateEmail = /\S+@\S+\.\S+/;
+    return validateEmail.test(email);
 }

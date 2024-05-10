@@ -15,10 +15,10 @@ export async function postComment(postId, authorName, authorEmail, commentConten
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                post_id: postId, // Matches 'comment_post_ID' in PHP
-                author: authorName, // Matches 'comment_author' in PHP
-                email: authorEmail, // Matches 'comment_author_email' in PHP
-                comment: commentContent, // Matches 'comment_content' in PHP
+                post_id: postId,
+                author: authorName,
+                email: authorEmail,
+                comment: commentContent,
             }),
         });
 
