@@ -547,6 +547,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   margin: 10px 5px;
+  width: 100%;
 }
 
 .dark-mode .post-author-date span {
