@@ -1250,6 +1250,11 @@ i#right-arrow {
     grid-template-columns: 1fr 1fr;
   }
 
+  .post-content figure {
+    justify-self: flex-start;
+    margin-left: 30px;
+  }
+
   .post-content img {
     max-width: 40vh;
 
@@ -1258,11 +1263,13 @@ i#right-arrow {
   .post-content p {
     font-size: var(--font-size-18);
     margin: 0;
+    margin-left: 30px;
   }
 
   .post-author-date-container {
     justify-content: flex-start;
     position: absolute;
+    margin-left: 30px;
 }
 
   /* Comments */
