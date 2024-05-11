@@ -751,7 +751,7 @@ footer {
 }
 
 .comment-form button:focus-visible {
-  outline: none;
+  outline: solid;
 }
 
 .comment-form button:hover {
@@ -784,7 +784,7 @@ footer {
 
 /* Form Error Message */
 
-.form-error-message, .error-message {
+.form-error-message, .error-message, .submit-error-message {
 	padding: 5px;
 	height: fit-content;
 	background-color: var(--color-light-accent-2);
@@ -797,7 +797,7 @@ footer {
   font-size: var(--font-size-12);
 }
 
-.form-error-message:before {
+.form-error-message:before, .submit-error-message:before {
   content: '';
   width: 0;
   height: 0;
@@ -809,11 +809,11 @@ footer {
   border-bottom: 5px solid var(--color-light-accent-2);
 }
 
-.dark-mode .form-error-message, .error-message {
+.dark-mode .form-error-message, .error-message, .submit-error-message {
   background-color: var(--color-dark-accent-2);
 }
 
-.dark-mode .form-error-message:before {
+.dark-mode .form-error-message:before, .submit-error-message:before {
   border-bottom: 5px solid var(--color-dark-accent-2);
 }
 

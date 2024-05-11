@@ -25,7 +25,7 @@ export function addNewComment() {
             let isValid = true;
             for (const input of inputs) {
                 handleCommentInput(input);
-                if (input.parentNode.querySelector('.form-error-message')) {
+                if (document.querySelector('#submit-button').disabled) {
                     isValid = false;
                     break;
                 }
@@ -78,16 +78,26 @@ export function addNewComment() {
         }
     }
 
+    // Verify all input fields when they lose focus
     const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
+    /* inputs.forEach(input => {
         input.addEventListener('blur', () => handleCommentInput(input));
-
-        // Add 'input' event listener if there's an error
-        if (input.parentNode.querySelector('.form-error-message')) {
-            input.addEventListener('input', () => handleCommentInput(input));
-        }
+    });
+ */
+    // Verify all input fields when typing keyup
+    inputs.forEach(input => {
+        input.addEventListener('keyup', () => handleCommentInput(input));
     });
 
-    // Input floating label effect
-    floatingLabels(inputs);
+
+    // Verify all input fields when submit button is hovered
+    const submitButton = document.querySelector('#submit-button');
+    submitButton.addEventListener('mouseover', () => {
+        inputs.forEach(input => {
+            handleCommentInput(input);
+        });
+
+        // Input floating label effect
+        floatingLabels(inputs);
+    });
 }

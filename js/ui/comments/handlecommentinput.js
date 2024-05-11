@@ -4,7 +4,9 @@ import { validateValidEmail } from '../shared/validatevalidemail.js';
 // Function to handle comment form input
 export const handleCommentInput = (eventOrInput) => {
     const input = eventOrInput.target || eventOrInput;
+    let allInputsVerified = false;
     let errorMessage;
+
     switch (input.id) {
         case 'author':
             errorMessage = 'Please enter your name';
@@ -25,10 +27,10 @@ export const handleCommentInput = (eventOrInput) => {
             errorMessage = 'Please fill out this field';
             removeErrorMessage(input);
     }
-    verifyFormInput(input, errorMessage);
+    allInputsVerified = verifyFormInput(input, errorMessage);
 
     // Remove 'input' event listener if there's no error
-    if (!input.parentNode.querySelector('.form-error-message')) {
+    if (!allInputsVerified) {
         input.removeEventListener('input', handleCommentInput);
     }
 };
