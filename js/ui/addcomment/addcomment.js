@@ -66,6 +66,7 @@ export function addNewComment() {
             const submitButton = document.querySelector('#submit-button');
             submitButton.disabled = true;
             submitButton.setAttribute('style', 'cursor: not-allowed;');
+            submitButton.tabIndex = 0;
 
             // Check every second if the button should be re-enabled
             const intervalId = setInterval(() => {
