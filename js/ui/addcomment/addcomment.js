@@ -80,10 +80,7 @@ export function addNewComment() {
 
     // Verify all input fields when they lose focus
     const inputs = document.querySelectorAll('input, textarea');
-    /* inputs.forEach(input => {
-        input.addEventListener('blur', () => handleCommentInput(input));
-    });
- */
+
     // Verify all input fields when typing keyup
     inputs.forEach(input => {
         input.addEventListener('keyup', () => handleCommentInput(input));
