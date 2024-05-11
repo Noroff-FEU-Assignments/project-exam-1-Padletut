@@ -569,6 +569,8 @@ footer {
   font-size: var(--font-size-16);
   height: fit-content;
   align-self: center;
+  font-size: var(--font-size-18);
+  font-family: var(--font-exo2);
 }
 
 .show-more-button:hover {
@@ -1089,6 +1091,8 @@ i#right-arrow {
   color: black;
   cursor: pointer;
   margin-top: 10px;
+  font-size: var(--font-size-18);
+  font-family: var(--font-exo2);
 }
 
 .contact-form button:hover {
