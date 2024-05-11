@@ -78,7 +78,6 @@ export function addNewComment() {
         }
     }
 
-    // Verify all input fields when they lose focus
     const inputs = document.querySelectorAll('input, textarea');
 
     // Verify all input fields when typing keyup

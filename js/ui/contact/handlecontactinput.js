@@ -44,10 +44,10 @@ export const handleContactInput = (eventOrInput) => {
                 removeErrorMessage(input);
             } else if (input.addEventListener('focus', () => removeErrorMessage(input)));
     }
-    verifyFormInput(input, errorMessage);
 
+    const allInputsVerified = verifyFormInput(input, errorMessage);
     // Remove 'input' event listener if there's no error
-    if (!input.parentNode.querySelector('.form-error-message')) {
+    if (!allInputsVerified) {
         input.removeEventListener('input', handleContactInput);
     }
 };
@@ -62,12 +62,12 @@ function removeErrorMessage(input) {
         }
     }, 5000);
 
-    // Remove error message if focus event is triggered
+    /* // Remove error message if focus event is triggered
     input.addEventListener('focus', () => {
         const errorMessageElement = input.parentNode.querySelector('.form-error-message');
         if (errorMessageElement) {
             errorMessageElement.remove();
             input.style.borderColor = '';
         }
-    });
+    }); */
 }

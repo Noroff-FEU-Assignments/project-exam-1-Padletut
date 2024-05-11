@@ -58,14 +58,21 @@ export function sendMessage() {
     });
 
     const inputs = document.querySelectorAll('input, textarea');
-    inputs.forEach(input => {
-        input.addEventListener('blur', () => handleContactInput(input));
 
-        // Add 'input' event listener if there's an error
-        if (input.parentNode.querySelector('.form-error-message')) {
-            input.addEventListener('input', () => handleContactInput(input));
-        }
+    // Verify all input fields when typing keyup
+    inputs.forEach(input => {
+        input.addEventListener('keyup', () => handleContactInput(input));
     });
+
+
+    // Verify all input fields when submit button is hovered
+    const submitButton = document.querySelector('#submit-button');
+    submitButton.addEventListener('mouseover', () => {
+        inputs.forEach(input => {
+            handleContactInput(input);
+        });
+    });
+
 
     // Input floating label effect
     floatingLabels(inputs);
