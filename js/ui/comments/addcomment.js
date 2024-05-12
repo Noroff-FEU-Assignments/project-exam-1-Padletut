@@ -1,8 +1,8 @@
 import * as constants from '../../constants/constants.js';
-import { renderComments } from '../comments/rendercomments.js';
+import { renderComments } from './rendercomments.js';
 import { loadFromLocalStorage, saveToLocalStorage } from '../../storage/local.js';
 import { postComment } from '../../logic/api/postcomment.js';
-import { handleCommentInput } from '../comments/handlecommentinput.js';
+import { handleCommentInput } from './handlecommentinput.js';
 import { floatingLabels } from '../shared/floatinglabels.js';
 
 // Function to add a new comment to the current post

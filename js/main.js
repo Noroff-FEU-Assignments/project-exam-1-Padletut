@@ -4,7 +4,7 @@ import { toggleTheme } from "./logic/themetoggler/themetoggler.js";
 import { toggleMobileMenu } from "./logic/togglemobilemenu/togglemobilemenu.js";
 import { renderPosts } from "./ui/posts/renderposts.js";
 import { renderPost } from "./ui/post/renderpost.js";
-import { addNewComment } from "./ui/addcomment/addcomment.js";
+import { addNewComment } from "./ui/comments/addcomment.js";
 import { renderCarousel } from "./ui/carousel/rendercarousel.js";
 import { sendMessage } from "./ui/contact/sendmessage.js";
 import { floatingLabels } from "./ui/shared/floatinglabels.js";

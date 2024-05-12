@@ -22,7 +22,7 @@ export function sendMessage() {
         let isValid = true;
         for (const input of inputs) {
             handleContactInput(input);
-            if (input.parentNode.querySelector('.form-error-message')) {
+            if (document.querySelector('#submit-button').disabled) {
                 isValid = false;
                 break;
             }
@@ -40,6 +40,9 @@ export function sendMessage() {
                 successMessage.textContent = 'Message sent successfully';
                 form.after(successMessage);
                 form.reset();
+                form.inputs.forEach(input => {
+                    input.style.border = 'none';
+                });
 
                 // Disable the submit button for 10 seconds to avoid spam
                 const submitButton = document.querySelector('#submit-button');
