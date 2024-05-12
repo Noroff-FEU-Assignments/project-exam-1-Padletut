@@ -1,6 +1,6 @@
 // Function to verify the input fields of the form and display error messages
 
-import { validateValidEmail } from "../shared/validatevalidemail.js";
+import { validateValidEmail } from "../../logic/validate/validatevalidemail.js";
 
 const submitButton = document.querySelector('#submit-button');
 const submitMessage = document.createElement('small');

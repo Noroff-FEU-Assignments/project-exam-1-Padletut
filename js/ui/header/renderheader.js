@@ -21,7 +21,7 @@ export function renderHeader(activePage) {
     </nav>
     <div class="search">
         <label for="searchInput" class="search-label">Search</label>
-        <input id="searchInput" type="text" placeholder="Search..." aria-label="Search input">
+        <input id="searchInput" type="text" placeholder="Search..." aria-label="Search input" autocomplete="off">
         <small id="searchSuggestions"></small>
         <button id="searchButton" type="submit" aria-label="Submit search"><i class="fas fa-search"></i></button>
     </div>

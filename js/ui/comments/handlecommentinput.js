@@ -1,5 +1,5 @@
 import { verifyFormInput } from '../shared/verifyforminput.js';
-import { validateValidEmail } from '../shared/validatevalidemail.js';
+import { validateValidEmail } from '../../logic/validate/validatevalidemail.js';
 import { removeErrorMessage } from '../shared/removeerrormessage.js';
 
 // Function to handle comment form input
