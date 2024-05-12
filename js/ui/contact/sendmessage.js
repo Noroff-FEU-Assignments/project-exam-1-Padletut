@@ -7,6 +7,7 @@ export function sendMessage() {
 
     const form = document.querySelector('.contact-form');
     const inputs = document.querySelectorAll('input, textarea');
+    let isSubmitting = false;
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -36,8 +37,14 @@ export function sendMessage() {
         const subject = document.querySelector('#subject').value;
         const message = document.querySelector('#message').value;
 
-        if (isValid) {
+        if (isValid && !isSubmitting) {
+
+            isSubmitting = true;
+            submitButton.setAttribute('style', 'cursor: not-allowed;');
+            submitButton.disabled = true;
+
             const status = await postContactMessage(name, email, subject, message);
+
             if (status === 200) {
                 const successMessage = document.createElement('p');
                 successMessage.classList.add('add-comment-success');
@@ -52,6 +59,7 @@ export function sendMessage() {
                 submitButton.setAttribute('style', 'cursor: not-allowed;');
                 const time = Date.now() + 10000;
                 localStorage.setItem('submitButtonDisabled', time);
+                isSubmitting = false;
 
             } else {
                 const errorMessage = document.createElement('p');
@@ -59,6 +67,7 @@ export function sendMessage() {
                 errorMessage.textContent = 'There was an error trying to send your message. Please try again later.';
                 form.after(errorMessage);
                 console.error('Error:', status);
+                isSubmitting = false;
             }
         }
     });

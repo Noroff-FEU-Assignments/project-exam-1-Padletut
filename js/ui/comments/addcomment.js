@@ -11,6 +11,7 @@ export function addNewComment() {
 
         constants.commentForm.addEventListener('submit', async (event) => {
             event.preventDefault();
+
             const errorMessage = document.querySelector('.error-message');
             if (errorMessage) {
                 errorMessage.remove();
@@ -25,7 +26,7 @@ export function addNewComment() {
             let isValid = true;
             for (const input of inputs) {
                 handleCommentInput(input);
-                if (document.querySelector('#submit-button').disabled) {
+                if (document.querySelector('#submit-button').disabled || inputs.length < 1) {
                     isValid = false;
                     break;
                 }
@@ -35,12 +36,17 @@ export function addNewComment() {
             const author = document.querySelector('#author').value;
             const email = document.querySelector('#email').value;
             const content = document.querySelector('#comment').value;
+            const commentForm = document.querySelector('.comment-form');
+
             if (isValid) {
+
+                submitButton.setAttribute('style', 'cursor: not-allowed;');
+                submitButton.disabled = true;
+
                 const status = await postComment(id, author, email, content);
+                commentForm.reset();
 
                 if (status === 200) {
-                    renderComments(id, true);
-
                     // Disable the submit button for 10 seconds to avoid spam
                     const submitButton = document.querySelector('#submit-button');
                     submitButton.disabled = true;
@@ -56,6 +62,8 @@ export function addNewComment() {
                             clearInterval(intervalId);
                         }
                     }, 1000);
+
+                    renderComments(id, true);
                 }
             }
         });
@@ -96,5 +104,18 @@ export function addNewComment() {
 
         // Input floating label effect
         floatingLabels(inputs);
+    });
+
+    // Avoid spam click or spam keypress on the submit button
+    submitButton.removeEventListener('click', () => {
+        submitButton.disabled = true;
+        submitButton.setAttribute('style', 'cursor: not-allowed;');
+    });
+
+    submitButton.removeEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            submitButton.disabled = true;
+            submitButton.setAttribute('style', 'cursor: not-allowed;');
+        }
     });
 }
