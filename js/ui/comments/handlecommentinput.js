@@ -1,5 +1,6 @@
 import { verifyFormInput } from '../shared/verifyforminput.js';
 import { validateValidEmail } from '../shared/validatevalidemail.js';
+import { removeErrorMessage } from '../shared/removeerrormessage.js';
 
 // Function to handle comment form input
 export const handleCommentInput = (eventOrInput) => {
@@ -34,16 +35,3 @@ export const handleCommentInput = (eventOrInput) => {
         input.removeEventListener('input', handleCommentInput);
     }
 };
-
-function removeErrorMessage(input) {
-    // Remove error messages after 5 seconds and remove input frame color
-    if (document.querySelector('.comments') && input.value.length === 0) {
-        setTimeout(() => {
-            const errorMessageElement = input.parentNode.querySelector('.form-error-message');
-            if (errorMessageElement) {
-                errorMessageElement.remove();
-                input.style.borderColor = '';
-            }
-        }, 5000);
-    }
-}

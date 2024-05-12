@@ -1,5 +1,6 @@
 import { verifyFormInput } from '../shared/verifyforminput.js';
 import { validateValidEmail } from '../shared/validatevalidemail.js';
+import { removeErrorMessage } from '../shared/removeerrormessage.js';
 
 /* function to handle contact form input */
 export const handleContactInput = (eventOrInput) => {
@@ -51,23 +52,3 @@ export const handleContactInput = (eventOrInput) => {
         input.removeEventListener('input', handleContactInput);
     }
 };
-
-function removeErrorMessage(input) {
-    // Remove error messages after 5 seconds and remove input frame color
-    setTimeout(() => {
-        const errorMessageElement = input.parentNode.querySelector('.form-error-message');
-        if (errorMessageElement) {
-            errorMessageElement.remove();
-            input.style.borderColor = '';
-        }
-    }, 5000);
-
-    /* // Remove error message if focus event is triggered
-    input.addEventListener('focus', () => {
-        const errorMessageElement = input.parentNode.querySelector('.form-error-message');
-        if (errorMessageElement) {
-            errorMessageElement.remove();
-            input.style.borderColor = '';
-        }
-    }); */
-}
