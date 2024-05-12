@@ -3,7 +3,7 @@ import { fetchComments } from '../../logic/api/fetchcomments.js';
 
 // Function to add a new comment to the current post
 
-export function renderComments(id, addComment = false) {
+export function renderComments(id) {
     const comments = document.querySelector('.comments');
     comments.innerHTML = '';
     if (comments) {
@@ -55,12 +55,5 @@ export function renderComments(id, addComment = false) {
                     comments.appendChild(noComments);
                 }
             });
-    }
-    if (addComment) {
-        // Scroll to the bottom of the site to see the new comment
-        const scrollingElement = (document.scrollingElement || document.body);
-        setTimeout(() => {
-            scrollingElement.scrollTop = scrollingElement.scrollHeight;
-        }, 0);
     }
 }

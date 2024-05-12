@@ -63,7 +63,7 @@ export function addNewComment() {
                         }
                     }, 1000);
 
-                    renderComments(id, true);
+                    renderComments(id);
                 }
             }
         });

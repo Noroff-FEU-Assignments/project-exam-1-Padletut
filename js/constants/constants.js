@@ -8,6 +8,7 @@ export const commentWrapper = document.querySelector('.comments-wrapper');
 export const postsListContainer = document.querySelector('.posts-list');
 export const post = document.querySelector('.post');
 export const comments = document.querySelector('.comments');
+export const commentsWrapper = document.querySelector('.comments-wrapper');
 export const commentForm = document.querySelector('.comment-form');
 export const contactForm = document.querySelector('.contact-form');
 export const inputs = document.querySelectorAll('input, textarea');
