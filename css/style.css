@@ -783,9 +783,10 @@ footer {
 
 .add-comment-success {
   padding: 20px;
-  color: var(--color-accent-4);
+  color: var(--color-accent-3);
   border-radius: 10px;
   text-align: center;
+  background-color: var(--color-accent-4);
 }
 
 /* Form Error Message */

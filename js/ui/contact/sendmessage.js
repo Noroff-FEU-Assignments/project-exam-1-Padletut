@@ -6,6 +6,8 @@ import { postContactMessage } from '../../logic/api/postcontact.js';
 export function sendMessage() {
 
     const form = document.querySelector('.contact-form');
+    const inputs = document.querySelectorAll('input, textarea');
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         const errorMessage = document.querySelector('.error-message');
@@ -22,7 +24,8 @@ export function sendMessage() {
         let isValid = true;
         for (const input of inputs) {
             handleContactInput(input);
-            if (document.querySelector('#submit-button').disabled) {
+            if (document.querySelector('#submit-button').disabled || inputs.length < 1) {
+                console.log('input:', inputs.length);
                 isValid = false;
                 break;
             }
@@ -32,6 +35,7 @@ export function sendMessage() {
         const email = document.querySelector('#email').value;
         const subject = document.querySelector('#subject').value;
         const message = document.querySelector('#message').value;
+
         if (isValid) {
             const status = await postContactMessage(name, email, subject, message);
             if (status === 200) {
@@ -40,9 +44,7 @@ export function sendMessage() {
                 successMessage.textContent = 'Message sent successfully';
                 form.after(successMessage);
                 form.reset();
-                form.inputs.forEach(input => {
-                    input.style.border = 'none';
-                });
+                form.style.display = 'none';
 
                 // Disable the submit button for 10 seconds to avoid spam
                 const submitButton = document.querySelector('#submit-button');
@@ -50,6 +52,7 @@ export function sendMessage() {
                 submitButton.setAttribute('style', 'cursor: not-allowed;');
                 const time = Date.now() + 10000;
                 localStorage.setItem('submitButtonDisabled', time);
+
             } else {
                 const errorMessage = document.createElement('p');
                 errorMessage.classList.add('error-message');
@@ -59,8 +62,6 @@ export function sendMessage() {
             }
         }
     });
-
-    const inputs = document.querySelectorAll('input, textarea');
 
     // Verify all input fields when typing keyup
     inputs.forEach(input => {
