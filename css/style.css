@@ -416,6 +416,7 @@ input:checked+.slider::before {
 
 .open ul {
   display: flex;
+  margin-right: 2px;
 }
 
 /* Search Bar */
