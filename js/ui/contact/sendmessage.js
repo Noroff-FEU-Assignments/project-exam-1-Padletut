@@ -104,6 +104,7 @@ export function sendMessage() {
         const intervalId = setInterval(() => {
             if (Date.now() > reEnableTime) {
                 submitButton.disabled = false;
+                submitButton.blur();
                 submitButton.style.cursor = 'pointer';
                 clearInterval(intervalId);
             }

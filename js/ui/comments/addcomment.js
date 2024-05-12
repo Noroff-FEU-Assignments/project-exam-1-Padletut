@@ -115,6 +115,7 @@ export function addNewComment() {
     submitButton.removeEventListener('keyup', (event) => {
         if (event.key === 'Enter') {
             submitButton.disabled = true;
+            submitButton.blur();
             submitButton.setAttribute('style', 'cursor: not-allowed;');
         }
     });
