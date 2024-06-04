@@ -29,4 +29,58 @@ To get the project started, follow these steps:
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/yourusername/supercar-blog.git
+git clone https://github.com/Noroff-FEU-Assignments/project-exam-1-Padletut.git
+```
+
+2. Navigate to the project directory:
+
+```bash
+cd supercar-blog
+```
+
+
+### Running
+To run the app, follow these steps:
+
+1. Ensure you have a running WordPress installation with the REST API enabled.
+
+2. Open the project in VSCODE and run live server.
+
+3. Configure the API endpoint in constans.js JavaScript code to point to your WordPress REST API.
+
+
+## Contributing
+If you would like to contribute to this project, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+1. Fork the repo:
+
+```bash
+git fork https://github.com/Noroff-FEU-Assignments/project-exam-1-Padletut.git
+```
+
+2. Create a feature branch:
+
+```bash
+git checkout -b feature-branch-name
+```
+
+3. Commit your changes:
+
+```bash
+git commit -m 'Add some feature'
+```
+4. Push to the branch:
+
+```bash
+git push origin feature-branch-name
+```
+
+5. Open a pull request.
+
+
+## Contact
+
+
+## License
+
+## Acknowledgments
