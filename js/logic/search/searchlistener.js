@@ -18,7 +18,10 @@ export function searchListener() {
     }, 300);
 
     const handleInput = debounce(async () => {
-        if (searchInput.value.length < 1) return;
+        if (searchInput.value.length < 1) {
+            searchSuggestions.style.display = 'none'; // Hide suggestions when input is empty
+            return;
+        }
         const searchResults = await searchFilter(searchInput);
         renderSearchSuggestions(searchResults);
     }, 300);

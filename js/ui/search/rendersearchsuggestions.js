@@ -11,12 +11,13 @@ export function renderSearchSuggestions(searchResults) {
         suggestion.innerHTML = post.title.rendered;
         searchSuggestions.appendChild(suggestion);
         suggestion.addEventListener('click', () => {
-            document.getElementById('searchInput').value = post.title.rendered;
+            document.getElementById('searchInput').value = `"${post.title.rendered}"`;
             searchSuggestions.innerHTML = '';
             searchInput.focus();
         });
     });
 
+    // Display the suggestions when the user types in the input
     if ((searchSuggestions.innerHTML !== '' && searchInput.value !== '' && searchInput === document.activeElement && searchInput.value.length > 2) || (searchInput.value !== '' && searchInput === document.activeElement)) {
         searchSuggestions.style.display = 'block';
     } else {
