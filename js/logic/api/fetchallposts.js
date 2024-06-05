@@ -1,7 +1,14 @@
 import * as constant from '../../constants/constants.js';
 
+let cachedPosts = null; // Cache for posts
+
 /* Function to fetch all posts in every worpdress pages */
 export async function fetchAllPosts() {
+    // If posts are in cache, return them
+    if (cachedPosts !== null) {
+        return cachedPosts;
+    }
+
     let page = 1;
     let dataLength;
     const allPosts = [];
@@ -15,6 +22,9 @@ export async function fetchAllPosts() {
             allPosts.push(...data);
             page++;
         } while (dataLength >= 10);
+
+        // Store posts in cache
+        cachedPosts = allPosts;
     } catch (error) {
         console.error('Error:', error);
         constant.main.innerHTML = '<h2>Something went wrong, please try again later</h2>';

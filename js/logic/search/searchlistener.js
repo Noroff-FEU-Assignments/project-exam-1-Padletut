@@ -10,19 +10,18 @@ export function searchListener() {
     const searchButton = document.getElementById('searchButton');
     const searchSuggestions = document.getElementById('searchSuggestions');
 
-    const handleSearch = debounce(async () => { // Wrap the function with debounce
+    const handleSearch = debounce(async () => {
         searchInput.value = searchInput.value.trim();
         if (searchInput.value.length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchResults(searchResults);
-    }, 300); // 300ms delay
+    }, 300);
 
-    const handleInput = debounce(async () => { // Wrap the function with debounce
-        //  searchInput.value = searchInput.value.trim();
+    const handleInput = debounce(async () => {
         if (searchInput.value.length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchSuggestions(searchResults);
-    }, 300); // 300ms delay
+    }, 300);
 
     searchInput.addEventListener('input', handleInput);
     searchInput.addEventListener('focus', handleInput);
