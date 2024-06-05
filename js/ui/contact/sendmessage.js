@@ -39,6 +39,8 @@ export function sendMessage() {
 
         if (isValid && !isSubmitting) {
 
+            const submitButton = document.querySelector('#submit-button');
+
             isSubmitting = true;
             submitButton.setAttribute('style', 'cursor: not-allowed;');
             submitButton.disabled = true;
@@ -76,16 +78,6 @@ export function sendMessage() {
     inputs.forEach(input => {
         input.addEventListener('keyup', () => handleContactInput(input));
     });
-
-
-    // Verify all input fields when submit button is hovered
-    const submitButton = document.querySelector('#submit-button');
-    submitButton.addEventListener('mouseover', () => {
-        inputs.forEach(input => {
-            handleContactInput(input);
-        });
-    });
-
 
     // Input floating label effect
     floatingLabels(inputs);

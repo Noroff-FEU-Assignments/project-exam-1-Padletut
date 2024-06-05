@@ -3,7 +3,6 @@ import { renderComments } from './rendercomments.js';
 import { loadFromLocalStorage, saveToLocalStorage } from '../../storage/local.js';
 import { postComment } from '../../logic/api/postcomment.js';
 import { handleCommentInput } from './handlecommentinput.js';
-import { floatingLabels } from '../shared/floatinglabels.js';
 
 // Function to add a new comment to the current post
 export function addNewComment() {
@@ -94,19 +93,10 @@ export function addNewComment() {
         input.addEventListener('keyup', () => handleCommentInput(input));
     });
 
-
-    // Verify all input fields when submit button is hovered
-    const submitButton = document.querySelector('#submit-button');
-    submitButton.addEventListener('mouseover', () => {
-        inputs.forEach(input => {
-            handleCommentInput(input);
-        });
-
-        // Input floating label effect
-        floatingLabels(inputs);
-    });
-
     // Avoid spam click or spam keypress on the submit button
+
+    const submitButton = document.querySelector('#submit-button');
+
     submitButton.removeEventListener('click', () => {
         submitButton.disabled = true;
         submitButton.setAttribute('style', 'cursor: not-allowed;');
