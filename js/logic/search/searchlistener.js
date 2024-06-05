@@ -1,6 +1,8 @@
 import { searchFilter } from './searchfilter.js';
 import { renderSearchResults } from '../../ui/search/rendersearchresults.js';
 import { renderSearchSuggestions } from '../../ui/search/rendersearchsuggestions.js';
+import { debounce } from '../debounce/debounce.js';
+
 /* Function to listen for search input and display search results */
 
 export function searchListener() {
@@ -8,19 +10,19 @@ export function searchListener() {
     const searchButton = document.getElementById('searchButton');
     const searchSuggestions = document.getElementById('searchSuggestions');
 
-    const handleSearch = async () => {
+    const handleSearch = debounce(async () => { // Wrap the function with debounce
         searchInput.value = searchInput.value.trim();
         if (searchInput.value.length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchResults(searchResults);
-    };
+    }, 300); // 300ms delay
 
-    const handleInput = async () => {
+    const handleInput = debounce(async () => { // Wrap the function with debounce
         //  searchInput.value = searchInput.value.trim();
         if (searchInput.value.length < 1) return;
         const searchResults = await searchFilter(searchInput);
         renderSearchSuggestions(searchResults);
-    };
+    }, 300); // 300ms delay
 
     searchInput.addEventListener('input', handleInput);
     searchInput.addEventListener('focus', handleInput);
